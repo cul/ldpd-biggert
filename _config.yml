@@ -41,3 +41,9 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+collections:
+  biggert:
+    source: biggert-items.json
+    layout: iiif-image-page
+    output: true
