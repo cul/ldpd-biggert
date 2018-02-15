@@ -23,7 +23,7 @@ module Hyacinth
       doc = dereference(pointer, root)
       if doc.is_a? Hash
         if doc["title"]
-          doc["sort_title"] = doc["title"].map {|title| title["sort_portion"] }
+          doc["sort_title"] = doc["title"].map {|title| title["sort_portion"] }.first
           doc["title"] = doc["title"].map do |title|
             (title.fetch("non_sort_portion", '') + ' ' + title["sort_portion"]).strip
           end
