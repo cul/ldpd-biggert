@@ -9,5 +9,6 @@ docs.each do |doc|
   ids = doc.delete('_identifiers')
   doc['identifiers'] = ids unless ids.empty?
   doc.delete('fedora_pid')
+  doc['doi'] = doc['doi'].tr('doi:','')
 end
 $stdout.puts JSON.pretty_generate(docs)
