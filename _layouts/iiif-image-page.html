@@ -1,0 +1,46 @@
+---
+layout: default
+---
+{% assign manifest_url = "https://derivativo-2.library.columbia.edu/iiif/2/presentation/" | append: page.doi | append: "/manifest.json" %}
+
+{% include iiif_presentation.html manifest_url=manifest_url %}
+{% include pagination.html collection=page.collection pid=page.pid %}
+
+<table class='meta-table'>
+  <tr class='meta-row'>
+    <td class='meta-label'>Title</td>
+    <td class='meta-field'>{{ page.title }}</td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>Genre</td>
+    <td class='meta-field'>{{ page.genre | join: ' ' }}</td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>Call Number</td>
+    <td class='meta-field'>{{ page.call_number }}</td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>Date</td>
+    <td class='meta-field'>{{ page.date_other_textual }}</td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>DOI</td>
+    <td class='meta-field'>{{ page.doi }}</td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>Companies</td>
+    <td class='meta-field'>{{ page.subject_name | join: ', ' }}</td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>Location</td>
+    <td class='meta-field'>{{ page.subject_hierarchical_geographic| join: ', ' }}</td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>Coordinates</td>
+    <td class='meta-field'>{{ page.coordinates | join: ' '}}</td>
+  </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>IIIF Manifest</td>
+    <td class='meta-field'><a href="{{ manifest_url }}"><img src="{{ site.baseurl }}/assets/iiif-logo.png" alt="iiif-logo" id="iiif-drag" width="25"/></a></td>
+  </tr>
+</table>
