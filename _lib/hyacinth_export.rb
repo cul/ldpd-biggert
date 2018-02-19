@@ -86,7 +86,7 @@ module Hyacinth
       end
       doc
     end
-    
+
     def self.flatten_geo(doc)
       # country_text_value?, state_text_value?, province_text_value?,
       # subject_hierarchical_geographic_city*, borough_text_value
@@ -160,6 +160,11 @@ module Hyacinth
       a = docs[0]
       common_values = a.keys.select { |key| !docs.detect {|d| d[key] != a[key] } }
       docs.each { |d| common_values.each {|key| d.delete(key) } }
+      keys_to_flatten = a.keys
+      docs.each do |d|
+        a.keys.each { |key| keys_to_flatten.delete(key) unless d[key].is_a? Array and d[key].length == 1 }
+      end
+      docs.each { |d| keys_to_flatten.each { |key| d[key] = d[key][0] } }
       docs
     end
   end
