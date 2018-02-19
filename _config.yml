@@ -1,8 +1,9 @@
 # basic settings
-title: The Biggert Collection
+title: The Biggert Collection of Architectural Vignettes
 description: The Biggert Collection of Architectural Vignettes on Commercial Stationery
-baseurl: '/biggert_static'
+baseurl: ''
 url: ''
+gh-baseurl: '/biggert_static'
 
 # build settings
 markdown: kramdown
@@ -16,3 +17,8 @@ collections:
     source: biggert-items.json
     layout: iiif-image-page
     output: true
+
+# cors headers for iiif use
+webrick:
+  headers:
+    "Access-Control-Allow-Origin": "*"
