@@ -1,0 +1,20 @@
+- label: Home
+  link: '/'
+- label: About
+  link: '/about-the-collection/'
+  sub:
+    - label: About the Collection
+      link: '/about-the-collection/'
+    - label: Rights & Permissions
+      link: '/rights/'
+- label: Browse the Collection
+  link: '/browse/'
+  sub:
+    - label: By Company Name
+      link: '/companies/'
+    - label: By Company Location
+      link: '/locations/'
+    - label: Image Gallery
+      link: '/gallery/'
+- label: Search
+  link: '/search/'
