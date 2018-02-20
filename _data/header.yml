@@ -8,7 +8,7 @@
     - label: Rights & Permissions
       link: '/rights/'
 - label: Browse the Collection
-  link: '/browse/'
+  link: '/gallery/'
   sub:
     - label: By Company Name
       link: '/companies/'
