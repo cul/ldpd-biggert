@@ -5,4 +5,5 @@ gem "minima", "~> 2.0"
 
 group :development, :test do
   gem 'wax_tasks'
+  gem 'tqdm'
 end
