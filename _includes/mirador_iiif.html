@@ -1,16 +1,15 @@
-<style>#viewer{height:500px;display:block;position:relative;}</style>
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/build/mirador/css/mirador-combined.css">
 <script src="{{ site.baseurl }}/build/mirador/mirador.js"></script>
-<div id="viewer" allowfullscreen="allowfullscreen"></div>
+<div id="viewer" allowfullscreen="allowfullscreen" style="height:500px;display:block;position:relative;"></div>
 <script type="text/javascript">
   $(function() {
     Mirador({
       id: 'viewer',
       autoHideControls: true,
-      data: [{ 'manifestUri': '{{ include.manifest_url }}'}],
+      data: [{ 'manifestUri': '{{ include.manifest_uri }}'}],
       mainMenuSettings: {show: false},
       windowObjects: [{
-        loadedManifest: '{{ include.manifest_url }}',
+        loadedManifest: '{{ include.manifest_uri }}',
         sidePanel: false,
         displayLayout: false,
         annotationState: 'annoOff',

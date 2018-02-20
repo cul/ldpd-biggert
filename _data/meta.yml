@@ -1,0 +1,16 @@
+- label: Title
+  field: title
+- label: Genre
+  field: genre
+- label: Call Number
+  field: call_number
+- label: Date
+  field: date_other_textual
+- label: DOI
+  field: doi
+- label: Companies
+  field: subject_name
+- label: Location
+  field: subject_hierarchical_geographic
+- label: Coordinates
+  field: coordinates

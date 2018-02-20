@@ -1,6 +1,9 @@
-<header class="site-header" role="banner" style="padding-top:50px;padding-bottom:30px;background:#eeeeee;">
+<script src="{{ site.js.jquery.cdn | default: 'https://code.jquery.com/jquery-3.2.1.min.js' }}"></script>
+<header class="site-header" role="banner">
   <div class="wrapper">
-    <b><a class="site-title" href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/assets/columbia-logo.png" style="padding-right:10px;max-height:30px;padding-bottom:5px;" alt="Columbia Logo"/></a><span>&#09;</span><a class="site-title" href="{{ site.baseurl }}/" style="font-size:32px;">{{ site.title | escape }}</a></b><br><br>
+    <b><a class="site-title" href="{{ site.baseurl }}/">
+      <img src="{{ site.baseurl }}/assets/columbia-logo.png" alt="Columbia Logo"/></a>
+      <span>&#09;</span><a class="site-title" href="{{ site.baseurl }}/">{{ site.title | escape }}</a></b><br><br>
     <nav class="site-nav" style="float:left;text-align:left;">
       <input type="checkbox" id="nav-trigger" class="nav-trigger" />
       <label for="nav-trigger">
