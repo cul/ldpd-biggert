@@ -17,6 +17,7 @@ coordinates:
 - 41.56222222222222,-72.65083333333334
 pid: ave_biggert_01826
 identifiers: ave_biggert_01826
+thumbnail: false
 permalink: /biggert/ave_biggert_01826/
 layout: iiif-image-page
 ---

@@ -16,9 +16,10 @@ title: Neidich Process Company. Letter
 sort_title: Neidich Process Company. Letter
 call_number: ave_biggert_00793
 coordinates:
-- 40.071°,-74.864°
+- 40.071,-74.864
 pid: ave_biggert_00793
 identifiers: ave_biggert_00793
+thumbnail: false
 permalink: /biggert/ave_biggert_00793/
 layout: iiif-image-page
 ---
