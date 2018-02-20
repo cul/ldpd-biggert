@@ -13,8 +13,9 @@ permalink: /companies/
 {% assign companies = companies | slice: 0, size %}
 {% assign companies = companies | split: "^" | uniq | sort %}
 
-<ul>
+<p>
 {% for company in companies %}
-  <li>{{ company }}</li>
+  {{ company }}
+  {% unless forloop.last %}⚬ {% endunless %}
 {% endfor %}
-</ul>
+</p>
