@@ -15,3 +15,6 @@ bundle exec rake wax:pagemaster biggert
 * **Digital Origin** reformatted digital
 * **Publish Target**
 * **Project**
+
+#### 993 manifests pass (code 200)
+#### 919 manifests fail (code 500) ([see list](missing.yml))
