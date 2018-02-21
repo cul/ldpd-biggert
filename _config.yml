@@ -33,6 +33,3 @@ collections:
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
-
-
-lunr_lanuguage: eng
