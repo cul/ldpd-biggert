@@ -10,7 +10,3 @@
   field: doi
 - label: Companies
   field: subject_name
-- label: Location
-  field: subject_hierarchical_geographic
-- label: Coordinates
-  field: coordinates
