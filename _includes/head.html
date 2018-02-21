@@ -1,0 +1,20 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ site.title | escape }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+  <link rel="stylesheet" id="main-css" type="text/css" href="{{ site.baseurl }}/assets/main.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- jquery -->
+  <script type='text/javascript' id="jquery"src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type='text/javascript' id="jquery-migrate" src="//code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+
+  <!--ldpd toolkit -->
+  <script type="text/javascript">CULh_colorfg = '#303030';CULh_colorbg = '#606060';</script>
+  <script type='text/javascript' id="ldpd-toolkit" src="//cdn.cul.columbia.edu/ldpd-toolkit/widgets/cultnbw.min.js"></script>
+</head>
