@@ -7,6 +7,12 @@ ruby _lib/export.rb > _data/biggert-items.json
 ```bash
 bundle exec rake wax:pagemaster biggert
 ```
+
+# to generate the index
+```bash
+bundle exec rake wax:lunr biggert
+```
+
 # Constant Data
 * **Collection** Biggert Collection of Architectural Vignettes on Commercial Stationery
 * **Location** Avery Architectural & Fine Arts Library, Columbia University

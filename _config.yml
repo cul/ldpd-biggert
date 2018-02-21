@@ -17,8 +17,22 @@ collections:
     source: biggert-items.json
     layout: iiif-image-page
     output: true
+    lunr_index:
+      fields:
+        - date_other
+        - sort_title
+        - title
+        - subject_hierarchical_geographic
+        - subject_name
+        - genre
+        - coordinates
+        - call_number
+        - doi
 
 # cors headers for iiif use
 webrick:
   headers:
     "Access-Control-Allow-Origin": "*"
+
+
+lunr_lanuguage: eng
