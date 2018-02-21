@@ -23,7 +23,7 @@ html, body{
 /* dropdown nav */
 #primary_nav_wrap {
   margin-top:15px;
-  z-index:10000000 !important;
+  z-index:999 !important;
   background:#eeeeee;
   ul {
     list-style:none;
@@ -31,7 +31,7 @@ html, body{
     float:left;
     margin:0;
     padding:0;
-    z-index:100000 !important;
+    z-index:999 !important;
     a {
       display:block;
       color:#333;
@@ -40,7 +40,7 @@ html, body{
       font-size:14px;
       line-height:32px;
       padding:0 15px;
-      z-index:100000 !important;
+      z-index:999 !important;
     }
     li {
       position:relative;
@@ -51,7 +51,7 @@ html, body{
       background:#eeeeee;
       &:hover {
         background:#dedede;
-        z-index:10000000 !important;
+        z-index:999 !important;
       }
     }
     ul {
@@ -152,5 +152,16 @@ cursor: pointer;
       width:50%;
     }
     .meta-field{}
+  }
+}
+
+/* Leaflet map */
+.leaflet-popup-content-wrapper{
+  leaflet-popup-content{
+    white-space: normal;
+    img{
+      max-width:120px;
+      max-height:120px;
+    }
   }
 }

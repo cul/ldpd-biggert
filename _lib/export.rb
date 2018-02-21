@@ -13,6 +13,6 @@ docs.tqdm.each do |doc|
   doc.delete('fedora_pid')
   doc['doi'] = doc['doi'].tr('doi:','')
   doc['thumbnail'] = thumbnail(doc['doi'],rand(1...4))
-  doc['coordinates'].each{ |c| c.tr!('°','') }
+  doc['coordinates'].each{ |c| c.tr!(c,"'"+c+"'") } # wrap coordinates in quotes bc yaml gets mad at the commas
 end
 $stdout.puts JSON.pretty_generate(docs)

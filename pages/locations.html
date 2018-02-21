@@ -2,6 +2,8 @@
 layout: page
 title: Browse by Location
 permalink: /locations/
+coordinates:
+  - 39.44,-98.70
 ---
 {% include leaflet_assets.html %}
-{% include leaflet_map.html coordinates='39.44,-98.70' zoom=4 %}
+{% include leaflet_map.html coordinates=page.coordinates zoom=4 %}
