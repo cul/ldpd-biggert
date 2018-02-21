@@ -19,6 +19,19 @@ layout: default
     <td class='meta-label'>IIIF Manifest</td>
     <td class='meta-field'><a href="{{ manifest_uri }}"><img src="{{ site.baseurl }}/assets/iiif-logo.png" alt="iiif-logo" id="iiif-drag" width="25"/></a></td>
   </tr>
+  <tr class='meta-row'>
+    <td class='meta-label'>Locations</td>
+    <td class='meta-field'>
+      {% assign i = 0 %}
+      {% for location in page.subject_hierarchical_geographic %}
+        <a data-coordinate="{{ page.coordinates[i] }}" style="cursor:pointer;" class="map-link">{{ location }}<sup><i class="material-icons" style="font-size:10px;">add_location</i></sup></a>{% unless forloop.last %}<br>{% endunless %}
+        {% assign i = i | plus: 1 %}
+      {% endfor %}
+    </td>
+  </tr>
 </table>
 
 {% include leaflet_map.html coordinates=page.coordinates %}
+<script>
+
+</script>
