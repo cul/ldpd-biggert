@@ -16,5 +16,5 @@
       link: '/locations/'
     - label: Image Gallery
       link: '/gallery/'
-- label: Search
-  link: '/search/'
+# - label: Search
+#   link: '/search/'
