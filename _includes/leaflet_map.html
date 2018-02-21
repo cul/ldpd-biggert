@@ -1,33 +1,44 @@
-{%- capture markers -%}
-  {%-for item in site.biggert | where: item.thumbnail -%}
-    {%- for c in item.coordinates -%}
-      var marker = L.marker([{{ c }}]);
-      marker.bindPopup(
-        '<a href="{{ site.baseurl }}{{ item.permalink }}" class="marker-pop">{{ item.title | slugify }}</a>'
-      );
-      markers.addLayer(marker);
-    {%- endfor -%}
-  {%- endfor -%}
-{%- endcapture -%}
-
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css"/>
 <script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
-
-<div id="map-viewer" style="height:350px;"></div>
+<div id="map-viewer" style="height:450px;border:1px solid grey;"></div>
 <script>
-  // map and tile layer
-  var map_viewer;
-  map_viewer = L.map('map-viewer', {
-    center: [{{ include.coordinates }}],
-    zoom: {{ include.zoom | default: 10 }}
+  $.getJSON("{{ site.baseurl }}/js/map-markers.json", function(markers_json) {
+    // map and tile layer
+    window.map_viewer;
+    map_viewer = L.map('map-viewer', {
+      center: [{{ include.coordinates[0] }}],
+      zoom: {{ include.zoom | default: 10 }}
+    });
+    L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
+       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+       subdomains: 'abcd',
+       minZoom: 0,
+       maxZoom: 15,
+       ext: 'png'
+    }).addTo(map_viewer);
+    // markers
+    var markers = L.markerClusterGroup({spiderfyOnMaxZoom: true});
+    for (i in markers_json){
+      item = markers_json[i];
+      var title = item['title'];
+      var link = item['link'];
+      var thumb = item['thumbnail'];
+      var coordinates = item['coordinates'];
+      for (c in coordinates){
+        coordinate = coordinates[c].split(",");
+        var marker = L.marker(coordinate);
+        marker.bindPopup(
+          '<a href="' + link + '">' + title + '<br><br><img src="' + thumb +'"/></a>'
+        );
+        markers.addLayer(marker);
+      }
+    }
+    map_viewer.addLayer(markers);
   });
-  L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map_viewer);
-  // markers
-  var markers = L.markerClusterGroup({spiderfyOnMaxZoom: false});
-  {{ markers }}
-  map_viewer.addLayer(markers);
+  $('.map-link').click(function(){
+    var coordinate = $(this).attr('data-coordinate').split(",");
+    console.log(coordinate);
+    map_viewer.setView(coordinate, 12);
+  });
 </script>
