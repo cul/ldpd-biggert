@@ -1,26 +1,42 @@
-# to generate the json
-```bash
-ruby _lib/export.rb > _data/biggert-items.json
+# Biggert Static Site
+
+## Getting Started
+
+### Set up
+
+```sh
+$ git clone https://github.com/cul/biggert_static.git && cd biggert_static
+$ ruby _lib/export.rb > _data/biggert-items.json # to generate json from hyacinth csv
+$ bundle
+```
+### Run the Rake processing tasks
+
+#### Generate the collection markdown pages
+```sh
+$ bundle exec rake wax:pagemaster biggert
+```
+#### Generate json for the map markers
+```sh
+$ bundle exec rake markers
+```
+#### Generate the lunr index
+```sh
+$ bundle exec rake wax:lunr
 ```
 
-# to generate the markdown
-```bash
-bundle exec rake wax:pagemaster biggert
+### OR:
+
+#### Run all of the above at once
+```sh
+$ bundle exec rake aota # generates pages, markers & the index
 ```
 
-# to generate the index
-```bash
-bundle exec rake wax:lunr biggert
-```
 
 # Constant Data
-* **Collection** Biggert Collection of Architectural Vignettes on Commercial Stationery
-* **Location** Avery Architectural & Fine Arts Library, Columbia University
-* **Sublocation** Avery Classics Collection
-* **Name(Collector)** Biggert, Robert
-* **Digital Origin** reformatted digital
-* **Publish Target**
-* **Project**
-
-#### 993 manifests pass (code 200)
-#### 919 manifests fail (code 500) ([see list](_/data/missing.yml))
+| **key** 	| **value** 	|
+|------------------	|------------------------------------------------------------------------	|
+| `collection` 	| Biggert Collection of Architectural Vignettes on Commercial Stationery 	|
+| `location` 	| Avery Architectural & Fine Arts Library, Columbia University 	|
+| `sublocation` 	| Avery Classics Collection 	|
+| `collector` 	| Biggert, Robert 	|
+| `digital_origin` 	| reformatted digital 	|
