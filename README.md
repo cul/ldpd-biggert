@@ -1,7 +1,7 @@
 # Biggert Static Site
-Jekyll Site Repo for the Biggert Collection of Architectural Vignettes @ the Avery Architectural and Fine Arts Library
+Jekyll site repo for the Biggert Collection of Architectural Vignettes<br>@ the Avery Architectural and Fine Arts Library
 
-![biggert_screen](assets/biggert_screen.png)
+<img src="assets/biggert_screen.png" style="width:100%"/>
 
 ## Getting Started
 
