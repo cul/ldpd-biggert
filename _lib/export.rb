@@ -12,6 +12,6 @@ docs.tqdm.each do |doc|
   doc['identifiers'] = ids unless ids.empty?
   doc.delete('fedora_pid')
   doc['doi'] = doc['doi'].tr('doi:','')
-  doc['thumbnail'] = thumbnail(doc['doi'],rand(1...4))
+  doc['thumbnail'] = thumbnail(doc['doi'])
 end
 $stdout.puts JSON.pretty_generate(docs)
