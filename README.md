@@ -23,4 +23,4 @@ bundle exec rake wax:lunr biggert
 * **Project**
 
 #### 993 manifests pass (code 200)
-#### 919 manifests fail (code 500) ([see list](missing.yml))
+#### 919 manifests fail (code 500) ([see list](_/data/missing.yml))

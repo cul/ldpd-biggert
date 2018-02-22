@@ -6,6 +6,7 @@
   $.getJSON("{{ site.baseurl }}/js/map-markers.json", function(markers_json) {
     // map and tile layer
     window.map_viewer;
+    console.log('{{ include.coordinates[0] }}');
     map_viewer = L.map('map-viewer', {
       center: [{{ include.coordinates[0] }}],
       zoom: {{ include.zoom | default: 10 }}

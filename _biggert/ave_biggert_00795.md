@@ -16,10 +16,10 @@ title: Pittsburg and Philadelphia Oil and Refining Company. Bill
 sort_title: Pittsburg and Philadelphia Oil and Refining Company. Bill
 call_number: ave_biggert_00795
 coordinates:
-- 39.94,-75.105
+- 39.94°,-75.105°
 pid: ave_biggert_00795
 identifiers: ave_biggert_00795
-thumbnail: false
+thumbnail: https://derivativo-3.library.columbia.edu/iiif/2/ldpd:345447/full/!256,256/0/native.jpg
 permalink: /biggert/ave_biggert_00795/
 layout: iiif-image-page
 ---
