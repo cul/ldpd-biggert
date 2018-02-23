@@ -8,7 +8,7 @@ gh-baseurl: '/biggert_static'
 # build settings
 markdown: kramdown
 theme: minima
-exclude: [Gemfile*, vendor, Rakefile, README.md]
+exclude: [Gemfile*, vendor, Rakefile, README.md, wax_tasks]
 permalink: pretty
 
 # wax collection settings

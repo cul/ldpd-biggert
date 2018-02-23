@@ -1,17 +1,19 @@
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/build/mirador/css/mirador-combined.css">
 <script src="{{ site.baseurl }}/build/mirador/mirador.js"></script>
 <div id="viewer" allowfullscreen="allowfullscreen" style="height:500px;display:block;position:relative;"></div>
+<style>.mirador-osd-context-controls{display:none}</style>
 <script type="text/javascript">
   $(function() {
     Mirador({
       id: 'viewer',
       autoHideControls: true,
-      data: [{ 'manifestUri': '{{ include.manifest_uri }}'}],
+      data: [
+        {'manifestUri': '{{ include.manifest_uri }}'}
+      ],
       mainMenuSettings: {show: false},
       windowObjects: [{
         loadedManifest: '{{ include.manifest_uri }}',
         sidePanel: false,
-        displayLayout: false,
         annotationState: 'annoOff',
         annotationLayer: false,
         overlay: false

@@ -16,5 +16,7 @@
       link: '/locations/'
     - label: Image Gallery
       link: '/gallery/'
-# - label: Search
-#   link: '/search/'
+- label: Mirador Viewer
+  link: '/mirador/'
+- label: Search
+  link: '/search/'

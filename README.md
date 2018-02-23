@@ -1,7 +1,7 @@
 # Biggert Static Site
 Jekyll site repo for the Biggert Collection of Architectural Vignettes<br>@ the Avery Architectural and Fine Arts Library
 
-<img src="assets/biggert_screen.png" style="width:100%"/>
+<a href="https://cul.github.io/biggert_static/"><img src="assets/biggert_screen.png" style="width:100%"/></a>
 
 ## Getting Started
 
@@ -21,6 +21,9 @@ $ ruby _lib/export.rb > _data/biggert-items.json
 
 #### Run the Rake processing tasks
 
+Generate the iiif collection json:<br>
+`$ bundle exec rake iiif_collect`
+
 Generate the collection markdown pages:<br>
 `$ bundle exec rake wax:pagemaster biggert`
 
@@ -29,12 +32,12 @@ Generate json for the map markers:<br>`$ bundle exec rake markers`
 Generate the elasticlunr index:<br>`$ bundle exec rake wax:lunr`
 
 __OR:__<br><br>
-Run all of the above at once!<br>`$ bundle exec rake aota` (generates iiif collection, md pages, map markers & search index)
+Run all of the above  (iiif collection, md pages, map markers & search index) at once!<br>`$ bundle exec rake aota`
 
 
 ## Constant Data
 | **key** 	| **value** 	|
-|------------------	|------------------------------------------------------------------------	|
+|:------------------	|:------------------------------------------------------------------------	|
 | `collection` 	| Biggert Collection of Architectural Vignettes on Commercial Stationery 	|
 | `location` 	| Avery Architectural & Fine Arts Library, Columbia University 	|
 | `sublocation` 	| Avery Classics Collection 	|
