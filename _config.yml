@@ -28,6 +28,14 @@ collections:
         - coordinates
         - call_number
         - doi
+quoll:
+  full:
+    page: search
+    terms:
+      - 'check'
+      - 'title:york'
+      - 'avery'
+      - 'michigan'
 
 # cors headers for iiif use
 webrick:
