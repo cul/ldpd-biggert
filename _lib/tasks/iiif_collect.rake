@@ -6,7 +6,7 @@ task :iiif_collect do
   collection = {
     "@context"  => "http://iiif.io/api/presentation/2/context.json",
     "@type"     => "sc:Collection",
-    "@id"       => "https://{{ site.url }}{{ site.baseurl }}/iiif/biggert/collection.json",
+    "@id"       => "{{ site.url }}{{ site.baseurl }}/iiif/biggert/collection.json",
     "label"     => "The Biggert Collection of Architectural Vignettes",
     "manifests" => []
   }
