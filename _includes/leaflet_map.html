@@ -1,9 +1,30 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css"/>
 <script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
+<script src="{{ site.js.elasticlunr.cdn | default: 'https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js' }}"></script>
+<script src="{{ site.baseurl }}/js/lunr-ranges.js"></script>
 <div id="map-viewer" style="height:450px;border:1px solid grey;"></div>
 <script>
   $.getJSON("{{ site.baseurl }}/js/map-markers.json", function(markers_json) {
+   // create elasticlunr index
+    window.index = new elasticlunr.Index;
+    window.store = markers_json;
+    index.saveDocument(false);
+    index.setRef('lunr_id');
+    index.addField('title');
+    index.addField('coordinates');
+    index.addField('link');
+    index.addField('thumbnail');
+    index.addField('lat');
+    index.addField('lon');
+
+    // add docs
+    for (i in store) {
+      var doc = elasticlunrRanges.splitCoords(store[i]);
+      doc['lunr_id'] = i;
+      index.addDoc(doc);
+    }
+
     // map and tile layer
     window.map_viewer;
     map_viewer = L.map('map-viewer', {
@@ -27,8 +48,15 @@
 
     // markers
     var markers = L.markerClusterGroup({spiderfyOnMaxZoom: true});
-    for (i in markers_json){
-      item = markers_json[i];
+    var bounds = map_viewer.getBounds();
+    var west = bounds.getWest().toString();
+    var south = bounds.getSouth().toString();
+    var east = bounds.getEast().toString();
+    var north = bounds.getNorth().toString();
+    var docs = index.mapSearch(west, south, east, north);
+    for (i in docs){
+      var ref = docs[i].ref;
+      item = store[ref];
       var title = item['title'];
       var link = item['link'];
       var thumb = item['thumbnail'];
@@ -46,7 +74,6 @@
   });
   $('.map-link').click(function(){
     var coordinate = $(this).attr('data-coordinate').split(",");
-    console.log(coordinate);
     map_viewer.setView(coordinate, 12);
   });
 </script>
