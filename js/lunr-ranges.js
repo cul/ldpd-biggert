@@ -164,3 +164,41 @@ elasticlunrRanges.ordinalTokenRange = function(invIndex, min, max) {
   prefixes.map(p => this.expandTokenRange(p, memo, invIndex, min, max));
   return newTokens;
 }
+
+elasticlunrRanges.placeMarkers = function(map_viewer, index, store) {
+    var markers = Object.entries(map_viewer._layers).find(function(entry) { entry[1]._markerCluster });
+    var add = false;
+    if (!markers) {
+      markers = L.markerClusterGroup({spiderfyOnMaxZoom: true});
+      add = true;
+    }
+    var bounds = map_viewer.getBounds();
+    var west = bounds.getWest().toString();
+    var south = bounds.getSouth().toString();
+    var east = bounds.getEast().toString();
+    var north = bounds.getNorth().toString();
+    var docs = index.mapSearch(west, south, east, north);
+    markers.clearLayers();
+    console.log("marking " + docs.length + " results");
+    for (i in docs){
+      var ref = docs[i].ref;
+      item = store[ref];
+      var title = item['title'];
+      var link = item['link'];
+      var thumb = item['thumbnail'];
+      var coordinates = item['coordinates'];
+      for (c in coordinates){
+        coordinate = coordinates[c].split(",");
+        var marker = L.marker(coordinate);
+        marker.bindPopup(
+          '<a href="' + link + '">' + title + '<br><br><img src="' + thumb +'"/></a>'
+        );
+        markers.addLayer(marker);
+      }
+    }
+    if (add) map_viewer.addLayer(markers);
+  }
+
+elasticlunrRanges.decorateMap = function(map_viewer, index, store) {
+  map_viewer.on('moveend', function(e) { elasticlunrRanges.placeMarkers(map_viewer, index, store); });
+}

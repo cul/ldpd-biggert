@@ -47,30 +47,8 @@
     }).addTo(map_viewer);
 
     // markers
-    var markers = L.markerClusterGroup({spiderfyOnMaxZoom: true});
-    var bounds = map_viewer.getBounds();
-    var west = bounds.getWest().toString();
-    var south = bounds.getSouth().toString();
-    var east = bounds.getEast().toString();
-    var north = bounds.getNorth().toString();
-    var docs = index.mapSearch(west, south, east, north);
-    for (i in docs){
-      var ref = docs[i].ref;
-      item = store[ref];
-      var title = item['title'];
-      var link = item['link'];
-      var thumb = item['thumbnail'];
-      var coordinates = item['coordinates'];
-      for (c in coordinates){
-        coordinate = coordinates[c].split(",");
-        var marker = L.marker(coordinate);
-        marker.bindPopup(
-          '<a href="' + link + '">' + title + '<br><br><img src="' + thumb +'"/></a>'
-        );
-        markers.addLayer(marker);
-      }
-    }
-    map_viewer.addLayer(markers);
+    elasticlunrRanges.placeMarkers(map_viewer, index, store);
+    elasticlunrRanges.decorateMap(map_viewer, index, store);
   });
   $('.map-link').click(function(){
     var coordinate = $(this).attr('data-coordinate').split(",");
