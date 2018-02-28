@@ -18,47 +18,12 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
   index.addField('coordinates');
   index.addField('call_number');
   index.addField('doi');
+  index.addField('lat');
+  index.addField('lon');
+
   // add docs
-  for (i in store) {index.addDoc(store[i]);}
+  for (i in store) {index.addDoc(elasticlunrRanges.splitCoords(store[i]));}
   // range search
-  elasticlunr.Index.prototype.rangeSearch = function (queryTokens, fieldName) {
-  // range tokens should be 'expanded' to appropriate values
-    queryTokens = queryTokens.map(function(x){ return parseInt(x); });
-    queryTokens.sort;
-    newTokens = new Array(queryTokens[1] - queryTokens[0] + 1).fill(null)
-    .map(function(val,ix) { return (ix + queryTokens[0]).toString(); });
-    queryTokens = newTokens;
-    var userConfig = {fields: {}, boost: 0};
-    userConfig.fields[fieldName] = {boost: 1, bool: "OR", expand: false};
-    var configStr = JSON.stringify(userConfig);
-    var config = new elasticlunr.Configuration(configStr, this.getFields()).get();
-    var queryResults = {};
-
-    for (var field in config) {
-      var fieldSearchResults = this.fieldSearch(queryTokens, field, config);
-      var fieldBoost = config[field].boost;
-
-      for (var docRef in fieldSearchResults) {
-        fieldSearchResults[docRef] = fieldSearchResults[docRef] * fieldBoost;
-      }
-
-      for (var docRef in fieldSearchResults) {
-        if (docRef in queryResults) {
-          queryResults[docRef] += fieldSearchResults[docRef];
-        } else {
-          queryResults[docRef] = fieldSearchResults[docRef];
-        }
-      }
-    }
-
-    var results = [];
-    for (var docRef in queryResults) {
-      results.push({ref: docRef, score: queryResults[docRef]});
-    }
-
-    results.sort(function (a, b) { return b.score - a.score; });
-    return results;
-  };
 
   // interaction
   $('input#search').on('keyup', function () {
