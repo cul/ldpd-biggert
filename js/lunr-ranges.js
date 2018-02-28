@@ -110,8 +110,8 @@ elasticlunrRanges.splitCoords = function(doc) {
   var lat = [];
   var lon = [];
   if (doc['coordinates']) {
-    coords = (Array.isArray(doc['coordinates'])) ? doc['coordinates'] : Array.of(doc['coordinates']);
-    coords.map(
+    doc['coordinates'] = doc['coordinates'].replace(/°/g, "").split(' || ');
+    doc['coordinates'].map(
       function(val) {
         vals = val.split(',');
         lat.push(elasticlunrRanges.absoluteOrdinal(vals[0],90));
@@ -186,7 +186,7 @@ elasticlunrRanges.placeMarkers = function(map_viewer, index, store) {
       var title = item['title'];
       var link = item['link'];
       var thumb = item['thumbnail'];
-      var coordinates = item['coordinates'];
+      var coordinates = item['coordinates']
       for (c in coordinates){
         coordinate = coordinates[c].split(",");
         var marker = L.marker(coordinate);

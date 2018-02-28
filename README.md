@@ -21,18 +21,10 @@ $ ruby _lib/export.rb > _data/biggert-items.json
 
 #### Run the Rake processing tasks
 
-Generate the iiif collection json:<br>
-`$ bundle exec rake iiif_collect`
-
 Generate the collection markdown pages:<br>
 `$ bundle exec rake wax:pagemaster biggert`
 
-Generate json for the map markers:<br>`$ bundle exec rake markers`
-
 Generate the elasticlunr index:<br>`$ bundle exec rake wax:lunr`
-
-__OR:__<br><br>
-Run all of the above  (iiif collection, md pages, map markers & search index) at once!<br>`$ bundle exec rake aota`
 
 
 ## Constant Data

@@ -5,10 +5,10 @@
 <script src="{{ site.baseurl }}/js/lunr-ranges.js"></script>
 <div id="map-viewer" style="height:450px;border:1px solid grey;"></div>
 <script>
-  $.getJSON("{{ site.baseurl }}/js/map-markers.json", function(markers_json) {
+  $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(json_store) {
    // create elasticlunr index
     window.index = new elasticlunr.Index;
-    window.store = markers_json;
+    window.store = json_store;
     index.saveDocument(false);
     index.setRef('lunr_id');
     index.addField('title');
@@ -18,6 +18,7 @@
     index.addField('lat');
     index.addField('lon');
 
+    console.log(store.length);
     // add docs
     for (i in store) {
       var doc = elasticlunrRanges.splitCoords(store[i]);
