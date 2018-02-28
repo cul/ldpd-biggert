@@ -28,6 +28,7 @@ collections:
         - coordinates
         - call_number
         - doi
+        - thumbnail # for map markers
 quoll:
   full:
     page: search
