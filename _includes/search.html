@@ -3,16 +3,28 @@
 <script src="{{ site.baseurl }}/js/lunr-ui.js"></script>
 
 <div class="search">
-  <table>
-    <tr>
-      <td id="search-icon">
-        <span class="icon">&#x1F50D;</span>
-      </td>
-      <td id="input-box">
-        <input type="text" class="searchTerm" id="search" placeholder="{{ site.search_placeholder | default: 'Browse the collection...' }}">
-      </td>
-    </tr>
-  </table>
-</div>
+  <form id="search-box">
+    <input type="text" id="search" placeholder="Search...">
+    <img id="submit" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png">
+  </form>
 
-<div id="results"></div>
+  <div id="checkboxes">
+    <p>Limit search to:</p>
+    <input type="checkbox" id="title-check" value="title" name="search-field">
+    <label for="title-check">Title</label>
+
+    <input type="checkbox" id="location-check" value="subject_hierarchical_geographic" name="search-field">
+    <label for="location-check">Location</label>
+
+    <input type="checkbox" id="subject-check" value="subject_name" name="search-field">
+    <label for="subject-check">Company</label>
+
+    <input type="checkbox" id="genre-check" value="genre" name="search-field">
+    <label for="genre-check">Medium</label>
+
+    <input type="checkbox" id="callnum-check" value="call_number" name="search-field">
+    <label for="callnum-check">Call Number</label>
+  </div>
+
+  <div id="results"></div>
+</div>
