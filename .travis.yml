@@ -10,5 +10,10 @@ env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 branches:
-  only:
-    - master
+  except:
+    - gh-pages
+deploy:
+  - provider: script
+    script: bundle exec rake wax:ghbranch
+    on:
+      branch: master
