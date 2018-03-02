@@ -12,9 +12,3 @@ env:
 branches:
   except:
     - gh-pages
-deploy:
-  - provider: script
-    skip-cleanup: true
-    script: bundle install && bundle exec rake wax:ghbranch
-    on:
-      branch: master
