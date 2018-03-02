@@ -12,8 +12,3 @@ env:
 branches:
   except:
     - gh-pages
-deploy:
-  - provider: script
-    script: bundle exec rake wax:ghbranch
-    on:
-      branch: master
