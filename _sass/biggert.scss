@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow:400,400i,500,500i,700&subset=latin-ext');
+@import url('https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
 
 html, body{
   font-family: 'Barlow', sans-serif;
@@ -84,64 +85,69 @@ html, body{
   }
 }
 /* Search */
-#search-box {
-  position: relative;
-  width: 100%;
-  margin: 0;
-}
-#search-icon{
-  width: 5%;
+
+
+.search{
+  .search-control:hover {color:#686868;}
+  .fa-home {
+    font-size:22px;
+  }
+  .search-box {
+    margin-top:20px;
+    width:100%;
+    position: relative;
+    height:48px;
+  }
+  .search-box > #search {
+    width:640px;
+    height:48px;
+    border-radius:6px 0px 0px 6px;
+    box-shadow: none;
+    border: 1px grey solid;
+    box-shadow: 1px 2px 2px #ccc;
+  }
+  input , input:focus {
+    border:none;
+    box-shadow:none;
+    background-color:none;
+    outline: 0;
+    font-size:16px;
+    padding:0px 12px;
+  }
+  .also {
+    font-family:'fontawesome';
+    display:inline-block;
+    background-color:#fff;
+    height:48px;
+    width:48px;
+    line-height: 48px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px grey solid;
+    position: absolute;
+    top:0;
+    border-radius:0px 6px 6px 0px;
+    box-shadow: 1px 2px 2px #ccc;
+  }
+  .search-link:hover {color:#686868;}
+  .setting {
+    border-radius:0px 6px 6px 0px;
+    margin-left:48px;
+    font-size:18px;
+  }
+  .setting:hover {color:#686868;}
+
+  #checkboxes{margin-top:20px;}
+  #results{
+    margin-top:30px;
+    .result{
+      margin-top:15px;
+      border-left: 2px solid black;
+      padding-left: 10px;
+    }
+  }
 }
 
-#search-form{
-  height: 40px;
-  border: 1px solid #999;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background-color: #fff;
-  overflow: hidden;
-}
-
-#search-text{
-  font-size: 14px;
-  color: #ddd;
-  border-width: 0;
-  background: transparent;
-}
-
-#search-box input[type="text"]{
-  width: 90%;
-  padding: 11px 0 12px 1em;
-  color: #333;
-  outline: none;
-}
-
-#search-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 42px;
-  width: 80px;
-  font-size: 14px;
-  color: #fff;
-  text-align: center;
-  line-height: 42px;
-  border-width: 0;
-  background-color:#004080;
-  -webkit-border-radius: 0px 5px 5px 0px;
-  -moz-border-radius: 0px 5px 5px 0px;
-  border-radius: 0px 5px 5px 0px;
-  cursor: pointer;
-}
-
-#search{
-  width: 100%;
-  height: 100%;
-  border: none;
-  font-size: 1em;
-}
-#results{margin:30px;}
 
 /* Pagination */
 .prevnext{
@@ -158,7 +164,6 @@ html, body{
       font-weight:bold;
       width:50%;
     }
-    .meta-field{}
   }
 }
 

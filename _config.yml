@@ -34,7 +34,7 @@ quoll:
     page: search
     terms:
       - 'check'
-      - 'title:york'
+      - 'new york'
       - 'avery'
       - 'michigan'
 
