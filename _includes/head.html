@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- jquery -->
-  <script type='text/javascript' id="jquery"src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type='text/javascript' id="jquery-migrate" src="//code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+  <script type='text/javascript' id="jquery"src="{{ site.js.jquery.cdn | default: 'https://code.jquery.com/jquery-3.2.1.min.js' }}"></script>
+  <script type='text/javascript' id="jquery-migrate" src="{{ site.js.jquery-migrate.cdn | default: 'https://code.jquery.com/jquery-migrate-3.0.0.min.js' }}"></script>
 
   <!--ldpd toolkit -->
   <script type="text/javascript">CULh_colorfg = '#303030';CULh_colorbg = '#606060';</script>
