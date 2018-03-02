@@ -11,6 +11,7 @@ search_tests.each do |search|
     before(:all) do
       visit(baseurl + "/" + search_page + perma_ext)
       @search_bar = find(:css, "#search")
+      @search_button = find(:css, "#submit")
     end
     it "has a search bar." do
       expect(@search_bar)
@@ -19,6 +20,7 @@ search_tests.each do |search|
       context "when searching the term \"" + term + "\"" do
         before(:all) do
           @search_bar.set term
+          @search_button.click
           @result_link = first(".result").first("a")['href']
         end
         after(:all) do

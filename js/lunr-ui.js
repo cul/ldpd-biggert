@@ -10,6 +10,8 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
   window.results_div = $('#results');
   window.search_input = $('input#search');
 
+  results_div.hide();
+
   index.saveDocument(false);
   index.setRef('lunr_id');
   index.addField('pid');
@@ -30,7 +32,18 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
 
   // interaction
   search_input.on('keyup', function () {
-    var query = $(this).val();
+
+  });
+  // On checked
+  $("input[name='search-field']").on( "click", function(event) {
+    results_div.empty();
+    selected = []
+    $('#checkboxes input:checked').each(function() {selected.push($(this).attr('value'));});
+  });
+  // on search click
+  $("#submit").on( "click", function() {
+    console.log("clicked");
+    var query = $(search_input).val();
     var params = {bool: "AND", expand: true};
     for (s in selected){
       params.fields = {};
@@ -60,11 +73,6 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
       var result  = '<div class="result"><b><a href="' + link + '">' + title + '</a></b><br>' + meta.join('&nbsp;&nbsp;|&nbsp;&nbsp;') + '</div>';
       results_div.append(result);
     }
-  });
-  // On checked
-  $( "input[name='search-field']" ).on( "click", function(event) {
-    results_div.empty();
-    selected = []
-    $('#checkboxes input:checked').each(function() {selected.push($(this).attr('value'));});
+    results_div.show();
   });
 });
