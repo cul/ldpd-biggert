@@ -1,6 +1,8 @@
 language: ruby
 sudo: required
 rvm: 2.4
+addons:
+  chrome: stable
 script:
   - bundle exec jekyll build
   - bundle exec rake wax:test
