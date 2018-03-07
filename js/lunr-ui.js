@@ -42,7 +42,7 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
   });
   // on search click
   $("#submit").on( "click", function() {
-    console.log("clicked");
+    //console.log("clicked");
     var query = $(search_input).val();
     var params = {bool: "AND", expand: true};
     for (s in selected){
@@ -74,5 +74,12 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
       results_div.append(result);
     }
     results_div.show();
+  });
+  $('#search').keypress(function (e) {
+    var key = e.which;
+    if(key == 13)
+    {
+      $('#submit').trigger('click');
+    }
   });
 });
