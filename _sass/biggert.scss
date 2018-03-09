@@ -205,12 +205,22 @@ h6, .h6 { font-size: $h6-font-size; }
 
 /* Leaflet map */
 .leaflet-popup-content-wrapper{
-  leaflet-popup-content{
+  width:220px;
+  .leaflet-popup-content{
     white-space: normal;
-    img{
-      max-width:120px;
-      max-height:120px;
-    }
+	.popup-inner-wrapper {
+		max-height:300px;
+		max-width:200px;
+		width:100%;
+		overflow:auto;
+		ul {
+			margin-left:0;
+			list-style:none;
+		}
+	}
+	.popup-inner-item {
+		padding:1em 0;
+	}
   }
 }
 
