@@ -170,41 +170,26 @@ elasticlunrRanges.placeMarkers = function(map_viewer, index, store) {
     var add = false;
     if (!markers) {
       markers = L.markerClusterGroup({spiderfyOnMaxZoom: false});
-
       markers.on('clusterclick', function (a) {
-
-			var maxItemsToShow = 300;
+			var maxItemsToShow = 254; // this is the max num of items in biggert at any one point. todo (?): setting a max and paginating.
 			if (map_viewer.getZoom() == map_viewer.getMaxZoom()) {
-
 					var allItemHtml = '';
 					var childMarkers = a.layer.getAllChildMarkers();
-
-					//var viewAllUrl = map_viewer.mapCoordinateSearchUrl.replace('_lat_', childMarkers[0].getLatLng().lat).replace('_long_', childMarkers[0].getLatLng().lng);
-
-					allItemHtml += '<strong>' + childMarkers.length + ' items found</strong>'; //<a class="pull-right" href="">View all &raquo &nbsp;</a></strong>';
+					allItemHtml += '<strong>' + childMarkers.length + ' items found</strong>'; 
 					allItemHtml += '<div class="popup-inner-wrapper"><ul>'
-
 					var numItemsToShow = childMarkers.length;
 					if (childMarkers.length > maxItemsToShow) {
 						numItemsToShow = maxItemsToShow;
 					}
-
 					for(var i = 0; i < numItemsToShow; i++) {
 						var marker = childMarkers[i];
 						allItemHtml += '<li>' + marker.getPopup().getContent() + '</li>';
 					}
-
-					//if (childMarkers.length > maxItemsToShow) {
-					//	allItemHtml += '<p><a href="">Click here to see the rest &raquo;</a></p>';
-					//}
-
 					allItemHtml += '</ul></div>';
-
 					L.popup()
 					.setLatLng(a.layer.getAllChildMarkers()[0].getLatLng())
 					.setContent(allItemHtml)
 					.openOn(map_viewer);
-
 			}
       });
       add = true;
