@@ -169,7 +169,29 @@ elasticlunrRanges.placeMarkers = function(map_viewer, index, store) {
     var markers = Object.entries(map_viewer._layers).find(function(entry) { entry[1]._markerCluster });
     var add = false;
     if (!markers) {
-      markers = L.markerClusterGroup({spiderfyOnMaxZoom: true});
+      markers = L.markerClusterGroup({spiderfyOnMaxZoom: false});
+      markers.on('clusterclick', function (a) {
+			var maxItemsToShow = 254; // this is the max num of items in biggert at any one point. todo (?): setting a max and paginating.
+			if (map_viewer.getZoom() == map_viewer.getMaxZoom()) {
+					var allItemHtml = '';
+					var childMarkers = a.layer.getAllChildMarkers();
+					allItemHtml += '<strong>' + childMarkers.length + ' items found</strong>'; 
+					allItemHtml += '<div class="popup-inner-wrapper"><ul>'
+					var numItemsToShow = childMarkers.length;
+					if (childMarkers.length > maxItemsToShow) {
+						numItemsToShow = maxItemsToShow;
+					}
+					for(var i = 0; i < numItemsToShow; i++) {
+						var marker = childMarkers[i];
+						allItemHtml += '<li>' + marker.getPopup().getContent() + '</li>';
+					}
+					allItemHtml += '</ul></div>';
+					L.popup()
+					.setLatLng(a.layer.getAllChildMarkers()[0].getLatLng())
+					.setContent(allItemHtml)
+					.openOn(map_viewer);
+			}
+      });
       add = true;
     }
     var bounds = map_viewer.getBounds();
@@ -191,7 +213,7 @@ elasticlunrRanges.placeMarkers = function(map_viewer, index, store) {
         coordinate = coordinates[c].split(",");
         var marker = L.marker(coordinate);
         marker.bindPopup(
-          '<a href="' + link + '">' + title + '<br><br><img src="' + thumb +'"/></a>'
+          '<div class="popup-inner-item"><a href="' + link + '">' + title + '<br><img alt="Thumbnail of ' + title + '" src="' + thumb +'"/></a></div>'
         );
         markers.addLayer(marker);
       }
