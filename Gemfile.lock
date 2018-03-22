@@ -133,7 +133,7 @@ GEM
       thread_safe (~> 0.1)
     wax_iiif (0.0.1)
       mini_magick (>= 4.8)
-    wax_tasks (0.0.45)
+    wax_tasks (0.0.46)
       colorize (~> 0.8)
       html-proofer (~> 3.0)
       jekyll (~> 3.7)
