@@ -15,3 +15,9 @@ script:
 after_success:
   - bundle exec rake wax:push:s3
   - bundle exec rake wax:push:gh
+deploy:
+  provider: s3
+  access_key_id: $AWS_ID
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: "cul-s3-dlst-travis-demo"
+  skip_cleanup: true
