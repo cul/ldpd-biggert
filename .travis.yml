@@ -21,3 +21,4 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
   bucket: "cul-s3-dlst-travis-demo"
   skip_cleanup: true
+  region: us-west-2
