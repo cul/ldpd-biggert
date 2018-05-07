@@ -1,7 +1,7 @@
 # basic settings
 title: The Biggert Collection of Architectural Vignettes
 description: The Biggert Collection of Architectural Vignettes on Commercial Stationery
-baseurl: ''
+baseurl: '/biggert'
 url: ''
 gh-baseurl: '/biggert_static'
 
