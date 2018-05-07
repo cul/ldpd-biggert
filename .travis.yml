@@ -9,6 +9,3 @@ before_script:
   - bundle exec jekyll build -d _site/biggert
 script:
   - bundle exec rake wax:test
-after_sucess:
-  - bundle exec rake wax:push:static
-  - bundle exec rake wax:push:gh
