@@ -52,6 +52,7 @@
     elasticlunrRanges.decorateMap(map_viewer, index, store);
   });
   $('.map-link').click(function(){
+    console.log('here');
     var coordinate = $(this).attr('data-coordinate').split(",");
     map_viewer.setView(coordinate, 12);
   });

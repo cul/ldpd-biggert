@@ -1,20 +1,21 @@
 # basic settings
 title: The Biggert Collection of Architectural Vignettes
 description: The Biggert Collection of Architectural Vignettes on Commercial Stationery
-baseurl: ''
 url: ''
-gh-baseurl: '/biggert_static'
+baseurl: '/biggert'
+gh-baseurl: '/ldpd-biggert'
 
 # build settings
 markdown: kramdown
-theme: minima
-exclude: [Gemfile*, vendor, Rakefile, README.md, wax_tasks]
+exclude: [Gemfile*, vendor, Rakefile, README.md, spec, package.json]
 permalink: pretty
 
 # wax collection settings
 collections:
+  pages:
+    output: true
   biggert:
-    source: biggert-items.json
+    source: biggert.json
     layout: iiif-image-page
     output: true
     lunr_index:
@@ -29,6 +30,19 @@ collections:
         - call_number
         - doi
         - thumbnail # for map markers
+menu:
+  - label: About
+    link: '/about-the-collection/'
+    sub:
+      - label: About the Collection
+        link: '/about-the-collection/'
+      - label: Rights & Permissions
+        link: '/rights/'
+  - label: Browse the Map
+    link: '/locations/'
+  - label: Search
+    link: '/search/'
+
 quoll:
   full:
     page: search

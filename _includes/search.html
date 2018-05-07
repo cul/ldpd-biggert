@@ -2,25 +2,33 @@
 <script src="{{ site.baseurl }}/js/lunr-ranges.js"></script>
 <script src="{{ site.baseurl }}/js/lunr-ui.js"></script>
 
-<div class="search">
-  <div id="checkboxes">
-    <p>Limit search to:</p>
+<div class="search-block">
+  <div class="checkboxes">
     <input type="checkbox" id="title-check" value="title" name="search-field">
     <label for="title-check">Title</label>
 
     <input type="checkbox" id="location-check" value="subject_hierarchical_geographic" name="search-field">
     <label for="location-check">Location</label>
+
     <input type="checkbox" id="subject-check" value="subject_name" name="search-field">
     <label for="subject-check">Company</label>
+
     <input type="checkbox" id="genre-check" value="genre" name="search-field">
     <label for="genre-check">Medium</label>
+
     <input type="checkbox" id="callnum-check" value="call_number" name="search-field">
     <label for="callnum-check">Call Number</label>
   </div>
 
   <div class="search-box">
-    <input id="search" placeholder="Search..." type="text">
-    <div class="also search-link" id="submit"></div>
+    <div class="input-group">
+      <input id="search"  class="form-control" placeholder="Search..." type="text">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" id="submit" type="button">
+          <i class="material-icons">search</i>
+        </button>
+      </span>
+    </div>
   </div>
 
   <div id="results"></div>

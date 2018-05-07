@@ -175,7 +175,7 @@ elasticlunrRanges.placeMarkers = function(map_viewer, index, store) {
 			if (map_viewer.getZoom() == map_viewer.getMaxZoom()) {
 					var allItemHtml = '';
 					var childMarkers = a.layer.getAllChildMarkers();
-					allItemHtml += '<strong>' + childMarkers.length + ' items found</strong>'; 
+					allItemHtml += '<strong>' + childMarkers.length + ' items found</strong>';
 					allItemHtml += '<div class="popup-inner-wrapper"><ul>'
 					var numItemsToShow = childMarkers.length;
 					if (childMarkers.length > maxItemsToShow) {
@@ -213,7 +213,7 @@ elasticlunrRanges.placeMarkers = function(map_viewer, index, store) {
         coordinate = coordinates[c].split(",");
         var marker = L.marker(coordinate);
         marker.bindPopup(
-          '<div class="popup-inner-item"><a href="' + link + '">' + title + '<br><img alt="Thumbnail of ' + title + '" src="' + thumb +'"/></a></div>'
+          '<div class="popup-inner-item"><a href="' + link + '">' + title + '<br><img class="sq-thumb-sm" alt="Thumbnail of ' + title + '" src="' + thumb +'"/></a></div>'
         );
         markers.addLayer(marker);
       }

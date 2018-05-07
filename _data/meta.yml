@@ -2,6 +2,8 @@
   field: title
 - label: Genre
   field: genre
+- label: Form
+  field: form
 - label: Call Number
   field: call_number
 - label: Date

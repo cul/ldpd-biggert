@@ -1,0 +1,49 @@
+---
+layout: page
+title: Browse by Location
+permalink: /locations/
+coordinates:
+  - 39.44,-98.70
+---
+
+{% include leaflet_assets.html %}
+{% include leaflet_map.html coordinates=page.coordinates zoom=4 %}
+
+<h4>Top Locations</h4>
+
+<div id="metadata-block">
+  <table class="table table-striped" id="locations">
+    <th>Location</th>
+    <th>Item Count</th>
+  </table>
+</div>
+
+<script>
+  $('#location-check').prop('checked', true); // set company box to checked by default
+</script>
+
+<script>
+  var groupBy = function(xs, key) {
+    return xs.reduce(function(rv, x) {
+      (rv[x[key]] = rv[x[key]] || []).push(x);
+      return rv;
+    }, {});
+  };
+
+  window.location_sort = []
+  window.top_ten
+
+  $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(data) {
+    location_data = groupBy(data, 'subject_hierarchical_geographic');
+    for (name in location_data){
+      num = location_data[name].length;
+      coords = location_data[name][0].coordinates;
+      location_sort.push({ 'name': name, 'num': num, 'coords': coords });
+    }
+    location_sort = location_sort.sort(function(a,b) {return (a.num < b.num) ? 1 : ((b.num < a.num) ? -1 : 0);} );
+    top_ten = location_sort.slice(0,10);
+    for (i in top_ten){
+      $("#locations").append("<tr class='meta'><td><a class='map-link' data-coordinate='" + top_ten[i].coords + "'>" + top_ten[i].name + "</a></td><td>" + top_ten[i].num + "</td></tr>");
+    }
+  });
+</script>

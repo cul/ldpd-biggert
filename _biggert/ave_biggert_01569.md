@@ -20,6 +20,6 @@ coordinates:
 pid: ave_biggert_01569
 identifiers: ave_biggert_01569
 thumbnail: https://derivativo-2.library.columbia.edu/iiif/2/ldpd:343903/full/!256,256/0/native.jpg
-permalink: /biggert/ave_biggert_01569/
+permalink: "/biggert/ave_biggert_01569/"
 layout: iiif-image-page
 ---

@@ -1,0 +1,67 @@
+---
+sitemap: false
+---
+/*
+variable declaration
+*/
+
+/* branding */
+$logo: url('{{ "/assets/logo.png" | relative_url }}');
+$brand-font: 'TrajanProRegular';
+
+/* text */
+
+$serif:           'Helvetica Neue';
+$sans-serif:      'Helvetica Neue';
+$main-font-size:  1rem;
+$max-text-width:  900px;
+$h1-font-size:    1.8rem;
+$h2-font-size:    1.6rem;
+$h3-font-size:    1.5rem;
+$h4-font-size:    1.4rem;
+$h5-font-size:    1.3rem;
+$h6-font-size:    1.2rem;
+
+
+/* colors */
+
+$text-color:      #222222;
+$accent-color:    #0072ce;
+$accent-color-2:  #0033a0;
+$bg-color:        #ffffff;
+$light-grey:      #dee2e6;
+$dark-grey:       #444444;
+
+/* viewport sizes */
+
+$max-width:       1100px;
+$break-lg:        900px;
+$break-med:       780px;
+$break-sm:        600px;
+
+/* margins */
+
+$margin:          2rem;
+$more-margin:     3rem;
+$less-margin:     1rem;
+$super-margin:    5rem;
+
+/* banner */
+
+$banner-height:   350px;
+$fade-time:       1.5s;
+
+/* iiif viewer */
+$viewer-height:   500px;
+
+
+/*
+font & asset import
+*/
+
+@import url('https://use.fontawesome.com/releases/v5.0.10/css/all.css');
+@font-face{font-family:trajanprobold;src:url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/TrajanPro-Bold.otf')}
+@font-face{font-family:TrajanProRegular;src:url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.eot');src:url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.eot?#iefix') format('embedded-opentype'),url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.woff') format('woff'),url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.ttf') format('truetype'),url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.svg#TrajanProRegular') format('svg');font-weight:400;font-style:normal}
+
+@import 'wax';
+@import 'biggert';

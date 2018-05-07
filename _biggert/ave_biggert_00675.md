@@ -20,6 +20,6 @@ coordinates:
 pid: ave_biggert_00675
 identifiers: ave_biggert_00675
 thumbnail: false
-permalink: /biggert/ave_biggert_00675/
+permalink: "/biggert/ave_biggert_00675/"
 layout: iiif-image-page
 ---

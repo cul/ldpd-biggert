@@ -1,35 +1,39 @@
-<header class="site-header" role="banner">
-  <div class="wrapper">
-	<h1>
-      <a class="site-title" href="{{ site.baseurl }}/">{{ site.title | escape }}</a>
-	</h1>
-    <nav class="site-nav">
-      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-      <label for="nav-trigger">
-        <span class="menu-icon">
-          <svg viewBox="0 0 18 15" width="18px" height="15px">
-            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-          </svg>
-        </span>
-      </label>
-      <div class="trigger" style="float:left;text-align:left;">
-        <nav id="primary_nav_wrap" class="site-nav" style="float:left;text-align:left;">
-          <ul>{% for l1 in site.data.header %}
-            <li><a href="{{ l1.link | relative_url }}">{{ l1.label }}</a>
-              {% if l1.sub %}<ul>
-                {% for l2 in l1.sub %}<li>
-                  <a href="{{ l2.link | relative_url }}">{{ l2.label }}</a>
-                  {% if l2.sub %}<ul>
-                    {% for l3 in l2.sub %}<a href="{{ l3.link | relative_url }}">{{ l3.label }}</a>{% endfor %}
-                  </ul>{% endif %}
-                </li>{% endfor %}
-              </ul>{% endif%}
+<div class="container-fluid" id="header-block">
+  <div class="container">
+    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center nopadding">
+      <span id="title">
+        <a href="{{ site.baseurl }}/" class="navbar-brand d-flex w-50 mr-auto" title="Home">
+          <span class="icon baseline logo"></span>
+          {{ site.title | newline_to_br }}
+        </a>
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+
+        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+          {% for item in site.menu %}
+            {% if item.sub %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ item.label }}{% unless forloop.last %}&nbsp;&nbsp;&nbsp;/{% endunless %}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% for sub in item.sub %}
+                <a class="dropdown-item" href="{{ site.baseurl }}{{ sub.link }}">{{ sub.label }}</a>
+                {% endfor %}
+              </div>
             </li>
-          {% endfor %}</ul>
-        </nav>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ site.baseurl }}{{ item.link }}">{{ item.label }}{% unless forloop.last %}&nbsp;&nbsp;&nbsp;/{% endunless %}</a>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
       </div>
     </nav>
   </div>
-</header>
+</div>
+<div id="header-spacer"></div>

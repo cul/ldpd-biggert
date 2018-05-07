@@ -16,7 +16,7 @@ $ bundle
 
 #### Generate json from hyacinth csv
 ```sh
-$ ruby _lib/export.rb > _data/biggert-items.json
+$ ruby _lib/export.rb > _data/biggert.json
 ```
 
 #### Run the Rake processing tasks
