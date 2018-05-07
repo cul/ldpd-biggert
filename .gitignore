@@ -3,3 +3,6 @@ _site
 .jekyll-metadata
 .DS_Store
 wax_tasks
+
+# ignore log file created by capistrano
+log/capistrano.log
