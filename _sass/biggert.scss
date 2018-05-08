@@ -1,234 +1,98 @@
-@import url('https://fonts.googleapis.com/css?family=Barlow:400,400i,500,500i,700&subset=latin-ext');
-@import url('https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
-
-html, body{
-  font-family: 'Barlow', sans-serif;
-}
 //
 // Headings
 //
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: $headings-margin-bottom;
-  font-family: $headings-font-family;
-  font-weight: $headings-font-weight;
-  line-height: $headings-line-height;
-  color: $headings-color;
-  @include media-query($on-palm) {
-	text-align:center;
+body, html{
+  font-family: $sans-serif;
+}
+#cultnbw, #topnavbar, .navbar-inner, #navbar-container {
+  z-index: 100000 !important;
+  width: 100vw;
+}
+#title {
+  font-family: $brand-font;
+}
+.page-title{
+  margin: $more-margin 0 $more-margin 0;
+}
+#main {
+  h1, h2, h3, h4, h5, h6
+  .h1 .h2 .h3 .h4 .h5 .h6 {
+    font-family: $brand-font !important;
+    margin-bottom: $margin !important;
   }
 }
-h1, .h1 { font-size: $h1-font-size; }
-h2, .h2 { font-size: $h2-font-size; }
-h3, .h3 { font-size: $h3-font-size; }
-h4, .h4 { font-size: $h4-font-size; }
-h5, .h5 { font-size: $h5-font-size; }
-h6, .h6 { font-size: $h6-font-size; }
-
-/* header */
-.site-header{
-  padding-top:20px;
-  padding-bottom:20px;
-  margin-bottom:20px;
-  background:#eeeeee;
-  box-shadow: 1px 6px 12px 0px rgba(164, 167, 168,0.5);
-  -webkit-box-shadow: 1px 6px 12px 0px rgba(164, 167, 168,0.5);
-  -moz-box-shadow: 1px 6px 12px 0px rgba(164, 167, 168,0.5);
-  border-top: none;
-  .site-title{
-    padding-right:10px;
-    padding-bottom:5px;
-    font-size:inherit;
-	float:none;
-  }
-  .site-nav {
-	float:left;
-    text-align:left;
-  }
-  @include media-query($on-palm) {
-    h1 {
-      text-align:center;
-    }
-  }
+#header-block {
+  background-color: #e8dfcc;
+  border-bottom: none;
+  box-shadow: 0 4px 8px -2px rgba(68,68,68,0.6);
 }
-/* dropdown nav */
-#primary_nav_wrap {
-  margin-top:0;
-  z-index:999 !important;
-  background:#eeeeee;
-  ul {
-    list-style:none;
-    position:relative;
-    float:left;
-    margin:0;
-    padding:0;
-    z-index:999 !important;
-    a {
-      display:block;
-      color:#333;
-      text-decoration:none;
-      font-weight:400;
-      font-size:$font-size-sm;
-      //line-height:32px;
-      line-height:1.25em;
-      padding:.5em 15px;
-      z-index:999 !important;
-    }
-    li {
-      position:relative;
-      float:left;
-      margin:0;
-      padding:0;
-      z-index: 100 !important;
-      background:#eeeeee;
-      &:hover {
-        background:#dedede;
-        z-index:999 !important;
-      }
-    }
-    ul {
-      display:none;
-      position:absolute;
-      top:100%;
-      left:0;
-      @include media-query($on-palm) {
-        left:unset;
-        right:0;
-      }
-      padding:0;
-      z-index: 100 !important;
-      li {
-        float:none;
-        width:200px;
-        z-index:100 !important;
-      }
-      a {
-        line-height:120%;
-        padding:10px 15px;
-        z-index:100 !important;
-      }
-      ul {
-        top:0;
-        left:100%;
-        z-index:100 !important;
-      }
+// /* Search */
+.search-block {
+  background-color: #d5e3ef;
+  padding: $margin;
+  .checkboxes {
+    margin-bottom: $less-margin 0;
+    label{
+      margin-right: $less-margin;
     }
   }
-  ul li:hover > ul {
-    display:block;
-    z-index:100000 !important;
-  }
-}
-/* Search */
-
-
-.search{
-  .search-control:hover {color:#686868;}
-  .fa-home {
-    font-size:$font-size-lg;
-  }
-  .search-box {
-    margin-top:20px;
-    width:100%;
-    position: relative;
-    height:48px;
-  }
-  .search-box > #search {
-    width:90%;
-    height:48px;
-    border-radius:6px 0px 0px 6px;
-    box-shadow: none;
-    border: 1px grey solid;
-    box-shadow: 1px 2px 2px #ccc;
-  }
-  input , input:focus {
-    border:none;
-    box-shadow:none;
-    background-color:none;
-    outline: 0;
-    font-size:$font-size-base;
-    padding:0px 12px;
-  }
-  .also {
-    font-family:'fontawesome';
-    display:inline-block;
-    background-color:#fff;
-    height:48px;
-    width:5%;
-    line-height: 48px;
-    text-align: center;
-    cursor: pointer;
-    border: 1px grey solid;
-    position: absolute;
-    top:0;
-    border-radius:0px 6px 6px 0px;
-    box-shadow: 1px 2px 2px #ccc;
-  }
-  .search-link:hover {color:#686868;}
-  .setting {
-    border-radius:0px 6px 6px 0px;
-    margin-left:48px;
-    font-size:$font-size-base;
-  }
-  .setting:hover {color:#686868;}
-
-  #checkboxes{margin-top:20px;}
-  #results{
-    margin-top:30px;
-    .result{
-      margin-top:15px;
-      border-left: 2px solid black;
-      padding-left: 10px;
+  .result {
+    &:hover {
+      background-color: #ffffff !important;
     }
   }
-}
-
-
-/* Pagination */
-.prevnext{
-  margin:0 auto;
-  background:transparent;
-  margin-bottom:40px;
-  td{width: 50%;}
-}
-
-/* Metadata tables */
-.meta-table{
-  .meta-row{
-    .meta-label{
-      font-weight:bold;
-      width:50%;
+  .btn-secondary{
+    background-color: $accent-color;
+    &:hover{
+      background-color: $accent-color-2;
     }
   }
 }
 
 /* Leaflet map */
-.leaflet-popup-content-wrapper{
-  width:220px;
-  .leaflet-popup-content{
+.leaflet-popup-content-wrapper {
+  width:150px;
+  .leaflet-popup-content {
     white-space: normal;
-	.popup-inner-wrapper {
-		max-height:300px;
-		max-width:200px;
-		width:100%;
-		overflow:auto;
-		ul {
-			margin-left:0;
-			list-style:none;
-		}
-	}
-	.popup-inner-item {
-		padding:1em 0;
-	}
+  	.popup-inner-wrapper {
+  		max-height:300px;
+  		max-width:150px;
+  		width:100%;
+  		overflow:auto;
+      ul, li {
+        margin-left: 0;
+        padding-left: 0;
+        list-style-type: none;
+      }
+  	}
+  	.popup-inner-item {
+      text-align: center;
+  		padding:1em 0 0 0;
+      margin: 0 auto;
+      a {
+        margin-bottom: 1em;
+      }
+      img {
+        margin: 1em 0 1em 0;
+      }
+  	}
   }
 }
 
-#iiif-viewer, #map-viewer {
-	height: 600px;
-	border:1px solid #aaa;
-	@include media-query($on-palm) {
-		height:400px;
-	}
+.map-link{
+  cursor: pointer;
 }
 
+#iiif-viewer, #map-viewer {
+  height:   $viewer-height;
+  width:    100%;
+  border:   1px solid grey;
+  margin:   0 0 $more-margin 0;
+  @media screen and (max-width: $break-med) {
+    height: $viewer-height / 1.5;
+  }
+  @media screen and (max-width: $break-sm) {
+    height: $viewer-height / 2;
+  }
+}

@@ -4,7 +4,7 @@ require 'hyacinth_export'
 require 'thumbnail'
 require 'tqdm'
 
-docs = Hyacinth::Export.to_json('_data/biggert-items.csv')
+docs = Hyacinth::Export.to_json('_data/hyacinth-biggert.csv')
 docs.tqdm.each do |doc|
   doc['pid'] = doc['_identifiers']
   doc['_identifiers'].delete(doc['pid'])

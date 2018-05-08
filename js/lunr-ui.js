@@ -23,6 +23,7 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
   index.addField('genre');
   index.addField('coordinates');
   index.addField('call_number');
+  index.addField('thumbnail');
   index.addField('doi');
   index.addField('lat');
   index.addField('lon');
@@ -64,13 +65,14 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
       var link    = item.link;
       var pid     = link.split('\/')[2];
       var title   = (item.title  || '');
+      var thumb   = item.thumbnail;
       var meta    = []
       if (item.date_other != 'unknown') { meta.push('c.'+ item.date_other);}
       if (item.subject_hierarchical_geographic) { meta.push(item.subject_hierarchical_geographic);}
       if (item.subject_name) { meta.push(item.subject_name);}
       if (item.genre) { meta.push(item.genre);}
       if (item.call_number) { meta.push(item.call_number);}
-      var result  = '<div class="result"><b><a href="' + link + '">' + title + '</a></b><br>' + meta.join('&nbsp;&nbsp;|&nbsp;&nbsp;') + '</div>';
+      var result  = '<div class="result"><a href="' + link + '"><img class="sq-thumb-sm" src="' + thumb +'"><p><b>' + title + '</b><br>' + meta.join('&nbsp;&nbsp;|&nbsp;&nbsp;') + '</p></a></div>';
       results_div.append(result);
     }
     results_div.show();
