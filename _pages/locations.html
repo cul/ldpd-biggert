@@ -10,6 +10,7 @@ coordinates:
 {% include leaflet_map.html coordinates=page.coordinates zoom=4 %}
 
 <h4>Top Locations</h4>
+<p>Click on a location below to recenter the map above.</p>
 
 <div id="metadata-block">
   <table class="table table-striped" id="locations">
@@ -18,18 +19,17 @@ coordinates:
   </table>
 </div>
 
-<script>
-  $('#location-check').prop('checked', true); // set company box to checked by default
-</script>
 
 <script>
+  // set location box to checked by default on search
+  $('#location-check').prop('checked', true);
   var groupBy = function(xs, key) {
     return xs.reduce(function(rv, x) {
       (rv[x[key]] = rv[x[key]] || []).push(x);
       return rv;
     }, {});
   };
-
+  // add top locations to table
   window.location_sort = []
   window.top_ten
 
@@ -46,4 +46,11 @@ coordinates:
       $("#locations").append("<tr class='meta'><td><a class='map-link' data-coordinate='" + top_ten[i].coords + "'>" + top_ten[i].name + "</a></td><td>" + top_ten[i].num + "</td></tr>");
     }
   });
+  // move map when loation is clicked
+  $(document).ready(function() {
+    $('.map-link').click(function(){
+      var coordinate = $(this).attr('data-coordinate').split(",");
+      map_viewer.setView(coordinate, 12);
+    });
+  })
 </script>

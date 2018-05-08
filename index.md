@@ -1,17 +1,21 @@
 ---
 layout: default
 banner:
-- collection: biggert
+- collection: items
   pid: ave_biggert_00314
   img: 'ldpd:344223'
   y: top
   x: left
   zoom: 1
-- collection: biggert
+- collection: items
+  pid: ave_biggert_00355
+  img: 'ldpd:344057'
+  zoom: 1
+- collection: items
   pid: ave_biggert_01382
   img: 'ldpd:344708'
   y: top
-- collection: biggert
+- collection: items
   pid: ave_biggert_00043
   img: 'ldpd:342987'
   y: top

@@ -13,4 +13,4 @@ The material offers a wealth of possibilities for architectural historians, as w
 #### For More Information
 
 - [Rights & Permissions]({{ '/rights' | relative_url }})
-- Contact the Library
+- [Contact the Library](http://library.columbia.edu/locations/avery.html)

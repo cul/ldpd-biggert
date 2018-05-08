@@ -14,7 +14,7 @@ permalink: pretty
 collections:
   pages:
     output: true
-  biggert:
+  items:
     source: biggert.json
     layout: iiif-image-page
     output: true

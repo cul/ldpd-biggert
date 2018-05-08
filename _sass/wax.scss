@@ -22,6 +22,14 @@ html, body {
   }
 }
 
+.nopadding {
+  padding: 0 !important;
+}
+
+.nomargin {
+  margin: 0 !important;
+}
+
 #main{
   a {
     color: $accent-color;
@@ -52,13 +60,16 @@ header & nav bar
   @media screen and (max-width: $break-med) {
     padding: $less-margin 0 $less-margin 0;
   }
-  top: 0;
-  left: 0;
   background-color: $bg-color;
   z-index: 10000;
-  position: fixed;
-  #title a {
-      font-size: $main-font-size * 1.2;
+  margin-bottom: $more-margin;
+  #title {
+    -ms-word-break: break-all;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    a.navbar-brand {
+      white-space: inherit;
+    }
   }
   .logo.baseline {
     background: $logo no-repeat;
@@ -66,26 +77,26 @@ header & nav bar
     align-self: center;
     padding: $main-font-size * .8;
     margin: .25em .25em 0 0;
+    @media screen and (max-width: $break-med) {
+      display: none;
+    }
   }
   ul {
     max-width: $max-text-width;
     font-size: $main-font-size;
+    .nav-link {
+      color: $text-color;
+      font-size: $main-font-size;
+      overflow-wrap: break-word;
+      font-weight: lighter !important;
+      padding-left: 0;
+    }
     .dropdown-toggle::after{
       display: none !important;
     }
   }
-  .navbar{
-    padding: 0 !important;
-    margin: 0 !important;
-    .navbar-toggler{
-      margin: $less-margin;
-    }
-  }
-}
-#header-spacer {
-  height: 175px;
-  @media screen and (max-width: $break-med) {
-    height: 150px;
+  .dropdown-item {
+    font-weight: lighter !important;
   }
 }
 
@@ -265,7 +276,6 @@ search box
   #gallery {
     display: flex;
     flex-wrap: wrap;
-
     .gallery-item {
       padding: 0;
       margin: 0;
@@ -344,8 +354,8 @@ search box
   height: 80px;
 }
 
-.footer{
-  margin-top: $super-margin;
+footer{
+  margin-top: $super-margin * 2;
   padding: $more-margin 0 $super-margin 0;
   color: white;
   background-color: $dark-grey;
