@@ -1,4 +1,5 @@
-# ldpd-biggert [![Build Status](https://travis-ci.org/cul/ldpd-biggert.svg?branch=master)](https://travis-ci.org/cul/biggert_static) [![Dependency Status](https://gemnasium.com/badges/github.com/cul/biggert_static.svg)](https://gemnasium.com/github.com/cul/biggert_static)
+# ldpd-biggert [![Build Status](https://travis-ci.org/cul/ldpd-biggert.svg?branch=master)](https://travis-ci.org/cul/biggert_static) [![Dependency Status](https://gemnasium.com/badges/github.com/cul/ldpd-biggert.svg)](https://gemnasium.com/github.com/cul/ldpd-biggert)
+
 Jekyll site for the Biggert Collection of Architectural Vignettes<br>@ the Avery Architectural and Fine Arts Library
 
 ## Getting Started
