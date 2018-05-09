@@ -207,13 +207,13 @@ elasticlunrRanges.placeMarkers = function(map_viewer, index, store) {
       item = store[ref];
       var title = item['title'];
       var link = item['link'];
-      var thumb = item['thumbnail'];
+      var thumb = 'https://derivativo-2.library.columbia.edu/iiif/2/' + item['canvas_id'] + '/full/!256,256/0/native.jpg';
       var coordinates = item['coordinates']
       for (c in coordinates){
         coordinate = coordinates[c].split(",");
         var marker = L.marker(coordinate);
         marker.bindPopup(
-          '<div class="popup-inner-item"><a href="' + link + '">' + title + '<br><img class="sq-thumb-sm" alt="Thumbnail of ' + title + '" src="' + thumb +'"/></a></div>'
+          '<div class="popup-inner-item"><a href="' + link + '">' + title + '<br><img class="sq-thumb-sm" alt="Thumbnail of ' + title + '" src="' + thumb + '"/></a></div>'
         );
         markers.addLayer(marker);
       }

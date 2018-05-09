@@ -225,6 +225,9 @@ search box
 
 .search-block {
   margin: $more-margin 0 $more-margin 0;
+  .checkboxes {
+    list-style-type: none;
+  }
   #search{
     border-style: groove;
     border-width: 2px;

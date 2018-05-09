@@ -3,22 +3,28 @@
 <script src="{{ site.baseurl }}/js/lunr-ui.js"></script>
 
 <div class="search-block">
-  <div class="checkboxes">
-    <input type="checkbox" id="title-check" value="title" name="search-field">
-    <label for="title-check">Title</label>
-
-    <input type="checkbox" id="location-check" value="subject_hierarchical_geographic" name="search-field">
-    <label for="location-check">Location</label>
-
-    <input type="checkbox" id="subject-check" value="subject_name" name="search-field">
-    <label for="subject-check">Company</label>
-
-    <input type="checkbox" id="genre-check" value="genre" name="search-field">
-    <label for="genre-check">Medium</label>
-
-    <input type="checkbox" id="callnum-check" value="call_number" name="search-field">
-    <label for="callnum-check">Call Number</label>
-  </div>
+  <ul class="checkboxes list-inline">
+    <li class="list-inline-item">
+      <input type="checkbox" id="title-check" value="title" name="search-field">
+      <label for="title-check">Title</label>
+    </li>
+    <li class="list-inline-item">
+      <input type="checkbox" id="location-check" value="subject_hierarchical_geographic" name="search-field">
+      <label for="location-check">Location</label>
+    </li>
+    <li class="list-inline-item">
+      <input type="checkbox" id="subject-check" value="subject_name" name="search-field">
+      <label for="subject-check">Company</label>
+    </li>
+    <li class="list-inline-item">
+      <input type="checkbox" id="genre-check" value="genre" name="search-field">
+      <label for="genre-check">Medium</label>
+    </li>
+    <li class="list-inline-item">
+      <input type="checkbox" id="callnum-check" value="call_number" name="search-field">
+      <label for="callnum-check">Call Number</label>
+    </li>
+  </ul>
 
   <div class="search-box">
     <div class="input-group">

@@ -7,31 +7,37 @@ layout: default
 {% include leaflet_assets.html %}
 {% include leaflet_iiif.html manifest_uri=manifest_uri %}
 
-<!-- <center> -->
-  <div id="metadata-block">
-    <table class="table table-striped">
-      {% for item in site.data.meta %}
-      <tr class="meta">
-        <td class="label">{{ item.label }}</td>
-        <td class="value">{{ page[item.field] }}</td>
-      </tr>
-      {% endfor %}
-      <tr class="meta">
-        <td class="label">IIIF Manifest </td>
-        <td class="value"><a href="{{ manifest_uri }}"><img src="{{ site.baseurl }}/assets/iiif-logo.png" alt="iiif-logo" id="iiif-drag" width="25"/><a/></td>
-      </tr>
-      <tr class="meta">
-        <td class="label">Locations</td>
-        <td class="value">
-          {% assign i = 0 %}
-          {% for location in page.subject_hierarchical_geographic %}
-            <a data-coordinate="{{ page.coordinates[i] }}" class="map-link">{{ location }}<sup><i class="material-icons" style="font-size:10px;">add_location</i></sup></a>{% unless forloop.last %}<br>{% endunless %}
-            {% assign i = i | plus: 1 %}
-          {% endfor %}
-        </td>
-      </tr>
-    </table>
-  </div>
-<!-- </center> -->
+<div id="metadata-block">
+  <table class="table table-striped">
+    {% for item in site.data.meta %}
+    <tr class="meta">
+      <td class="label">{{ item.label }}</td>
+      <td class="value">{{ page[item.field] }}</td>
+    </tr>
+    {% endfor %}
+    <tr class="meta">
+      <td class="label">Collector</td>
+      <td class="value">Biggert, Robert</td>
+    </tr>
+    <tr class="meta">
+      <td class="label">Current Location</td>
+      <td class="value">Avery Architectural & Fine Arts Library, Columbia University</td>
+    </tr>
+    <tr class="meta">
+      <td class="label">IIIF Manifest </td>
+      <td class="value"><a href="{{ manifest_uri }}"><img src="{{ site.baseurl }}/assets/iiif-logo.png" alt="iiif-logo" id="iiif-drag" width="25"/><a/></td>
+    </tr>
+    <tr class="meta">
+      <td class="label">Locations</td>
+      <td class="value">
+        {% assign i = 0 %}
+        {% for location in page.subject_hierarchical_geographic %}
+          <a data-coordinate="{{ page.coordinates[i] }}" class="map-link">{{ location }}<sup><i class="material-icons" style="font-size:10px;">add_location</i></sup></a>{% unless forloop.last %}<br>{% endunless %}
+          {% assign i = i | plus: 1 %}
+        {% endfor %}
+      </td>
+    </tr>
+  </table>
+</div>
 
 {% include leaflet_map.html coordinates=page.coordinates %}

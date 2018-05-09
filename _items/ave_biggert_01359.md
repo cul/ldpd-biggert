@@ -19,7 +19,7 @@ coordinates:
 - 39.84722222222222,-75.37277777777777
 pid: ave_biggert_01359
 identifiers: ave_biggert_01359
-thumbnail: https://derivativo-1.library.columbia.edu/iiif/2/ldpd:344739/full/!256,256/0/native.jpg
+canvas_id: ldpd:396621
 permalink: "/items/ave_biggert_01359/"
 layout: iiif-image-page
 ---

@@ -15,7 +15,7 @@ $ bundle
 
 #### Generate json from hyacinth csv
 ```sh
-$ ruby _lib/export.rb > _data/biggert.json
+$ ruby _lib/export.rb > _data/items.json
 ```
 
 #### Run the Rake processing tasks
@@ -45,13 +45,3 @@ Delete the `_site` folder when you're finished.
 To add the newest version to the `cul.github.io/ldpd-biggert` gh-pages demo (optional), run:
 
 `$ bundle exec rake wax:push:gh`
-
-
-## Constant Data
-| **key** 	| **value** 	|
-|:------------------	|:------------------------------------------------------------------------	|
-| `collection` 	| Biggert Collection of Architectural Vignettes on Commercial Stationery 	|
-| `location` 	| Avery Architectural & Fine Arts Library, Columbia University 	|
-| `sublocation` 	| Avery Classics Collection 	|
-| `collector` 	| Biggert, Robert 	|
-| `digital_origin` 	| reformatted digital 	|

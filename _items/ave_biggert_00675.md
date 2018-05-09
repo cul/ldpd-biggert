@@ -19,7 +19,7 @@ coordinates:
 - 44.94416666666666,-93.0936111111111
 pid: ave_biggert_00675
 identifiers: ave_biggert_00675
-thumbnail: false
+canvas_id: ldpd:395947
 permalink: "/items/ave_biggert_00675/"
 layout: iiif-image-page
 ---

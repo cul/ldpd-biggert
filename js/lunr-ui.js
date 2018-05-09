@@ -26,8 +26,10 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
   index.addField('genre');
   index.addField('coordinates');
   index.addField('call_number');
-  index.addField('thumbnail');
+  index.addField('canvas_id');
   index.addField('doi');
+  index.addField('lat');
+  index.addField('lon');
 
   // add docs from json store to index
   for (i in store) {
@@ -69,7 +71,7 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
       var link    = item.link;
       var pid     = link.split('\/')[2];
       var title   = (item.title  || '');
-      var thumb   = item.thumbnail;
+      var thumb   = 'https://derivativo-2.library.columbia.edu/iiif/2/' + item.canvas_id + '/full/!256,256/0/native.jpg';
       var meta    = []
       if (item.date_other != 'unknown') { meta.push('c.'+ item.date_other);}
       if (item.subject_hierarchical_geographic) { meta.push(item.subject_hierarchical_geographic);}

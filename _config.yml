@@ -15,7 +15,7 @@ collections:
   pages:
     output: true
   items:
-    source: biggert.json
+    source: items.json
     layout: iiif-image-page
     output: true
     lunr_index:
@@ -29,7 +29,7 @@ collections:
         - coordinates
         - call_number
         - doi
-        - thumbnail # for map markers
+        - canvas_id
 menu:
   - label: About
     link: '/about-the-collection/'

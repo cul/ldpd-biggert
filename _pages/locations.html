@@ -22,35 +22,35 @@ coordinates:
 
 <script>
   // set location box to checked by default on search
-  $('#location-check').prop('checked', true);
-  var groupBy = function(xs, key) {
-    return xs.reduce(function(rv, x) {
-      (rv[x[key]] = rv[x[key]] || []).push(x);
-      return rv;
-    }, {});
-  };
-  // add top locations to table
-  window.location_sort = []
-  window.top_ten
-
-  $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(data) {
-    location_data = groupBy(data, 'subject_hierarchical_geographic');
-    for (name in location_data){
-      num = location_data[name].length;
-      coords = location_data[name][0].coordinates;
-      location_sort.push({ 'name': name, 'num': num, 'coords': coords });
-    }
-    location_sort = location_sort.sort(function(a,b) {return (a.num < b.num) ? 1 : ((b.num < a.num) ? -1 : 0);} );
-    top_ten = location_sort.slice(0,10);
-    for (i in top_ten){
-      $("#locations").append("<tr class='meta'><td><a class='map-link' data-coordinate='" + top_ten[i].coords + "'>" + top_ten[i].name + "</a></td><td>" + top_ten[i].num + "</td></tr>");
-    }
-  });
-  // move map when loation is clicked
   $(document).ready(function() {
-    $('.map-link').click(function(){
-      var coordinate = $(this).attr('data-coordinate').split(",");
-      map_viewer.setView(coordinate, 12);
+    $('#location-check').prop('checked', true);
+    var groupBy = function(xs, key) {
+      return xs.reduce(function(rv, x) {
+        (rv[x[key]] = rv[x[key]] || []).push(x);
+        return rv;
+      }, {});
+    };
+
+    // add top locations to table
+    window.location_sort = []
+    window.top_ten
+
+    $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(data) {
+      location_data = groupBy(data, 'subject_hierarchical_geographic');
+      for (name in location_data){
+        num = location_data[name].length;
+        coords = location_data[name][0].coordinates;
+        location_sort.push({ 'name': name, 'num': num, 'coords': coords });
+      }
+      location_sort = location_sort.sort(function(a,b) {return (a.num < b.num) ? 1 : ((b.num < a.num) ? -1 : 0);} );
+      top_ten = location_sort.slice(0,10);
+      for (i in top_ten){
+        $("#locations").append("<tr class='meta'><td><a class='map-link' data-coordinate='" + top_ten[i].coords + "'>" + top_ten[i].name + "</a></td><td>" + top_ten[i].num + "</td></tr>");
+      }
+      $('.map-link').click(function(){
+        var coordinate = $(this).attr('data-coordinate').split(",");
+        map_viewer.setView(coordinate, 12);
+      });
     });
   })
 </script>
