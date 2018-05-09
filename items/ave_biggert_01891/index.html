@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <!-- Canonical link to help search engines -->
+  <link rel="canonical" href="/ldpd-biggert/items/ave_biggert_01891/"/>
+  <link rel=icon href="/ldpd-biggert/assets/logo.png">
+  <!-- Basic meta elements -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta name="description" content="">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+
+  <title>
+    
+      W. A. Myatt. Bill
+    
+  </title>
+
+  <!-- styles -->
+  <link rel="stylesheet" href="/ldpd-biggert/assets/wax.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- jquery -->
+  <script type='text/javascript' id="jquery" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--ldpd toolkit -->
+  <script type='text/javascript' id="jquery-migrate" src="//code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+  <script type="text/javascript">CULh_colorfg = '#303030';CULh_colorbg = '#303030';</script>
+  <script type='text/javascript' id="ldpd-toolkit" src="//cdn.cul.columbia.edu/ldpd-toolkit/widgets/cultnbw.min.js"></script>
+</head>
+
+  <body>
+    <header class="container-fluid" id="header-block" role="banner">
+  <div class="container">
+    <nav class="navbar navbar-light nopadding">
+      <p id="title">
+        <a href="/ldpd-biggert/" class="navbar-brand d-flex" title="Home">
+          <span class="icon baseline logo"></span>
+          The Biggert Collection of Architectural Vignettes
+        </a>
+      </p>
+      <div id="wax-navbar">
+        <ul class="nav ml-auto list-inline nomargin">
+          
+            
+            <li class="nav-item dropdown nopadding">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                About&nbsp;&nbsp;&nbsp;/
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <a class="dropdown-item" href="/ldpd-biggert/about-the-collection/">About the Collection</a>
+                
+                <a class="dropdown-item" href="/ldpd-biggert/rights/">Rights & Permissions</a>
+                
+              </div>
+            </li>
+            
+          
+            
+            <li class="nav-item nopadding">
+              <a class="nav-link" href="/ldpd-biggert/locations/">Browse the Map&nbsp;&nbsp;&nbsp;/</a>
+            </li>
+            
+          
+            
+            <li class="nav-item nopadding">
+              <a class="nav-link" href="/ldpd-biggert/search/">Search</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <section class="container" id="main" role="main">
+      
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+<script id="leaflet" src="//unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+
+<script id="leaflet-iiif" src="//cdn.jsdelivr.net/npm/leaflet-iiif@2.0.1/leaflet-iiif.min.js"></script>
+<div id="iiif-viewer"></div>
+<script>
+  var iiif_viewer;
+  var iiifLayers = {};
+  var manifestUrl = 'https://derivativo-2.library.columbia.edu/iiif/2/presentation/10.7916/D8DN5H80/manifest.json';
+  iiif_viewer = L.map('iiif-viewer', {
+    center: [0, 0],
+    crs: L.CRS.Simple,
+    zoom: 1,
+    zoomSnap: .5,
+    minZoom: 0,
+    maxZoom: 6
+  });
+  $.getJSON(manifestUrl, function(data) {;
+    var i = 1;
+    $.each(data.sequences[0].canvases, function(_, val) {
+      var label = 'image ' + i;
+      iiifLayers[label] = L.tileLayer.iiif(val.images[0].resource.service['@id'] + '/info.json', {fitBounds: true});
+      i++;
+    });
+    if (i > 2){ L.control.layers(iiifLayers).addTo(iiif_viewer);}
+    iiifLayers[Object.keys(iiifLayers)[0]].addTo(iiif_viewer);
+  });
+</script>
+
+
+<div id="metadata-block">
+  <table class="table table-striped">
+    
+    <tr class="meta">
+      <td class="label">Title</td>
+      <td class="value">W. A. Myatt. Bill</td>
+    </tr>
+    
+    <tr class="meta">
+      <td class="label">Genre</td>
+      <td class="value">Invoices</td>
+    </tr>
+    
+    <tr class="meta">
+      <td class="label">Form</td>
+      <td class="value">printed ephemera</td>
+    </tr>
+    
+    <tr class="meta">
+      <td class="label">Call Number</td>
+      <td class="value">ave_biggert_01891</td>
+    </tr>
+    
+    <tr class="meta">
+      <td class="label">Date</td>
+      <td class="value">1900-1909</td>
+    </tr>
+    
+    <tr class="meta">
+      <td class="label">DOI</td>
+      <td class="value">10.7916/D8DN5H80</td>
+    </tr>
+    
+    <tr class="meta">
+      <td class="label">Companies</td>
+      <td class="value">W. A. Myatt</td>
+    </tr>
+    
+    <tr class="meta">
+      <td class="label">Collector</td>
+      <td class="value">Biggert, Robert</td>
+    </tr>
+    <tr class="meta">
+      <td class="label">Current Location</td>
+      <td class="value">Avery Architectural & Fine Arts Library, Columbia University</td>
+    </tr>
+    <tr class="meta">
+      <td class="label">IIIF Manifest </td>
+      <td class="value"><a href="https://derivativo-2.library.columbia.edu/iiif/2/presentation/10.7916/D8DN5H80/manifest.json"><img src="/ldpd-biggert/assets/iiif-logo.png" alt="iiif-logo" id="iiif-drag" width="25"/><a/></td>
+    </tr>
+    <tr class="meta">
+      <td class="label">Locations</td>
+      <td class="value">
+        
+        
+          <a data-coordinate="35.766666666666666,-78.63333333333334" class="map-link">Raleigh, North Carolina, United States<sup><i class="material-icons" style="font-size:10px;">add_location</i></sup></a>
+          
+        
+      </td>
+    </tr>
+  </table>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css"/>
+<script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+<script src="/ldpd-biggert/js/lunr-ranges.js"></script>
+<div id="map-viewer"></div>
+<script>
+  $.getJSON("/ldpd-biggert/js/lunr-index.json", function(json_store) {
+   // create elasticlunr index
+    window.index = new elasticlunr.Index;
+    window.store = json_store;
+    index.saveDocument(false);
+    index.setRef('lunr_id');
+    index.addField('title');
+    index.addField('coordinates');
+    index.addField('link');
+    index.addField('thumbnail');
+    index.addField('lat');
+    index.addField('lon');
+
+    console.log(store.length);
+    // add docs
+    for (i in store) {
+      var doc = elasticlunrRanges.splitCoords(store[i]);
+      doc['lunr_id'] = i;
+      index.addDoc(doc);
+    }
+
+    // map and tile layer
+    window.map_viewer;
+    map_viewer = L.map('map-viewer', {
+      center: [35.766666666666666,-78.63333333333334],
+      zoom: 10
+    });
+    L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.{ext}', {
+    	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    	subdomains: 'abcd',
+    	minZoom: 0,
+    	maxZoom: 18,
+    	ext: 'png'
+    }).addTo(map_viewer);
+    L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 18,
+      ext: 'png'
+    }).addTo(map_viewer);
+
+    // markers
+    elasticlunrRanges.placeMarkers(map_viewer, index, store);
+    elasticlunrRanges.decorateMap(map_viewer, index, store);
+  });
+  $('.map-link').click(function(){
+    console.log('here');
+    var coordinate = $(this).attr('data-coordinate').split(",");
+    map_viewer.setView(coordinate, 12);
+  });
+</script>
+
+
+    </section>
+    <footer class="container-fluid" role="contentinfo">
+  <div class="container">
+    <div class="float-left">© Columbia University Libraries</div>
+    <div class="float-right">Presented by the Avery Architectural & Fine Arts Library</div>
+  </div>
+</footer>
+
+  </body>
+  <!-- bootstrap -->
+  <script type='text/javascript' id="bootstrap" src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script type='text/javascript' id="popper" src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <!-- wax js for banners -->
+  <script type="text/javascript" src="/ldpd-biggert/js/wax.js"></script>
+</html>
