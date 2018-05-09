@@ -3,15 +3,18 @@ layout: none
 ---
 // get index json
 $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
+
   // create elasticlunr index
   window.index = new elasticlunr.Index;
   window.store = index_json;
-  window.selected = []
+  window.selected = [];
   window.results_div = $('#results');
   window.search_input = $('input#search');
 
+  // hide results until query is submitted
   results_div.hide();
 
+  // add field info from json store to index
   index.saveDocument(false);
   index.setRef('lunr_id');
   index.addField('pid');
@@ -25,38 +28,39 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
   index.addField('call_number');
   index.addField('thumbnail');
   index.addField('doi');
-  index.addField('lat');
-  index.addField('lon');
 
-  // add docs
-  for (i in store) {index.addDoc(elasticlunrRanges.splitCoords(store[i]));}
-
-  // interaction
-  search_input.on('keyup', function () {
-
-  });
-  // On checked
+  // add docs from json store to index
+  for (i in store) {
+    index.addDoc(elasticlunrRanges.splitCoords(store[i]));
+  }
+  // check for selected fields
   $("input[name='search-field']").on( "click", function(event) {
     results_div.empty();
     selected = []
-    $('#checkboxes input:checked').each(function() {selected.push($(this).attr('value'));});
+    $('.checkboxes input:checked').each(function() {
+      selected.push($(this).attr('value'));
+    });
   });
-  // on search click
+
+  // on search with selected fields boosted
   $("#submit").on( "click", function() {
-    //console.log("clicked");
+    var results = null;
     var query = $(search_input).val();
-    var params = {bool: "AND", expand: true};
+    var params = { bool: "AND", expand: true };
+
     for (s in selected){
       params.fields = {};
       params.fields[selected[s]] = {boost: 2};
       params.boost = 0;
     }
-    var results = null;
+
+    // if query includes a date range
     if (query.match(/\d+[-]\d+/)) {
       results = index.rangeSearch(query.split(/[-]/),'date_other');
     } else {
       results = index.search(query, params);
     }
+
     results_div.empty();
     results_div.prepend("<p><small>Displaying " + results.length + " results.</small></p>");
     for (var r in results) {
@@ -79,8 +83,7 @@ $.getJSON("{{ site.baseurl }}/js/lunr-index.json", function(index_json) {
   });
   $('#search').keypress(function (e) {
     var key = e.which;
-    if(key == 13)
-    {
+    if(key == 13) {
       $('#submit').trigger('click');
     }
   });

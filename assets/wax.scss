@@ -59,9 +59,9 @@ $viewer-height:   500px;
 font & asset import
 */
 
-@import url('https://use.fontawesome.com/releases/v5.0.10/css/all.css');
-@font-face{font-family:trajanprobold;src:url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/TrajanPro-Bold.otf')}
-@font-face{font-family:TrajanProRegular;src:url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.eot');src:url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.eot?#iefix') format('embedded-opentype'),url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.woff') format('woff'),url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.ttf') format('truetype'),url('http://cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.svg#TrajanProRegular') format('svg');font-weight:400;font-style:normal}
+@import url('//use.fontawesome.com/releases/v5.0.10/css/all.css');
+@font-face{font-family:trajanprobold;src:url('//cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/TrajanPro-Bold.otf')}
+@font-face{font-family:TrajanProRegular;src:url('//cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.eot');src:url('//cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.eot?#iefix') format('embedded-opentype'),url('//cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.woff') format('woff'),url('//cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.ttf') format('truetype'),url('//cdn.cul.columbia.edu/ldpd-toolkit/build/fonts/trajanpro-regular-webfont.svg#TrajanProRegular') format('svg');font-weight:400;font-style:normal}
 
 @import 'wax';
 @import 'biggert';
