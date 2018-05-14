@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 gem 'jekyll', '~> 3.8.1'
 
+gem 'capistrano-cul', require: false
+
 group :development, :test do
   gem 'rspec'
   gem 'selenium-webdriver'
