@@ -3,19 +3,13 @@ require 'selenium/webdriver'
 require 'capybara/dsl'
 require 'rack/jekyll'
 require 'rack/test'
+# Require 'webdrivers/chromedriver' so that chromedriver is automatically installed/updated
+require 'webdrivers/chromedriver'
 
 RSpec.configure do |config|
   config.include Capybara::DSL
 
-  Capybara.register_driver :headless_chrome do |app|
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-      chromeOptions: { args: %w(headless disable-gpu) }
-    )
-    Capybara::Selenium::Driver.new app, browser: :chrome, desired_capabilities: capabilities
-  end
-
-  Capybara.javascript_driver = :headless_chrome
-  Capybara.current_driver = Capybara.javascript_driver
+  Capybara.javascript_driver = :selenium_chrome_headless
   Capybara.app = Rack::Jekyll.new(:force_build => false)
   Capybara.server = :webrick
 end
