@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.7.5']
+    env:
+      RAILS_ENV: test
+      NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install libxslt for nokogiri gem (required for version < 1.11)
+        run: sudo apt-get install -y libxml2-dev libxslt-dev
+      - name: Add --no-document option to .gemrc file to speed up bundle install
+        run: "echo 'gem: --no-document' > ~/.gemrc"
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Generate the elasticlunr index
+        run: bundle exec rake wax:lunr
+      - name: Build jekyll site
+        run: bundle exec jekyll build -d _site/biggert
+      - name: Run tests
+        run: bundle exec rake wax:test
