@@ -87,26 +87,35 @@
 <script id="leaflet-iiif" src="//cdn.jsdelivr.net/npm/leaflet-iiif@2.0.1/leaflet-iiif.min.js"></script>
 <div id="iiif-viewer"></div>
 <script>
-  var iiif_viewer;
-  var iiifLayers = {};
-  var manifestUrl = 'https://derivativo-2.library.columbia.edu/iiif/2/presentation/10.7916/D8M91MMM/manifest.json';
-  iiif_viewer = L.map('iiif-viewer', {
+  const manifestUrl = 'https://dlc.library.columbia.edu/iiif/3/presentation/10.7916/D8M91MMM/manifest.json';
+  const iiifViewer = L.map('iiif-viewer', {
     center: [0, 0],
     crs: L.CRS.Simple,
     zoom: 1,
     zoomSnap: .5,
-    minZoom: 0,
     maxZoom: 6
   });
-  $.getJSON(manifestUrl, function(data) {;
-    var i = 1;
-    $.each(data.sequences[0].canvases, function(_, val) {
-      var label = 'image ' + i;
-      iiifLayers[label] = L.tileLayer.iiif(val.images[0].resource.service['@id'] + '/info.json', {fitBounds: true});
-      i++;
+  fetch(manifestUrl).then(manifestSrc => {
+    manifestSrc.json().then(data => {
+      console.log({ data });
+      const iiifLayers = {};
+      var i = 1;
+      $.each(data.items, function(_, canvas) {
+        if (canvas.type != 'Canvas') return;
+        var label = 'image ' + i;
+        $.each(canvas.items, function(_, annoPage) {
+          if (annoPage.type != 'AnnotationPage') return;
+          $.each(annoPage.items, function(_, anno) {
+            if (anno.type != 'Annotation' || anno.motivation != 'painting') return;
+            console.log(anno.body.service['id'] + '/info.json');
+            iiifLayers[label] = L.tileLayer.iiif(anno.body.service['id'] + '/info.json', { fitBounds: true })
+            i++;
+          });
+        });
+      });
+      L.control.layers(iiifLayers).addTo(iiifViewer);
+      iiifLayers[Object.keys(iiifLayers)[0]].addTo(iiifViewer);
     });
-    if (i > 2){ L.control.layers(iiifLayers).addTo(iiif_viewer);}
-    iiifLayers[Object.keys(iiifLayers)[0]].addTo(iiif_viewer);
   });
 </script>
 
@@ -159,7 +168,7 @@
     </tr>
     <tr class="meta">
       <td class="label">IIIF Manifest </td>
-      <td class="value"><a href="https://derivativo-2.library.columbia.edu/iiif/2/presentation/10.7916/D8M91MMM/manifest.json"><img src="/biggert/assets/iiif-logo.png" alt="iiif-logo" id="iiif-drag" width="25"/><a/></td>
+      <td class="value"><a href="https://dlc.library.columbia.edu/iiif/3/presentation/10.7916/D8M91MMM/manifest.json"><img src="/biggert/assets/iiif-logo.png" alt="iiif-logo" id="iiif-drag" width="25"/><a/></td>
     </tr>
     <tr class="meta">
       <td class="label">Locations</td>
