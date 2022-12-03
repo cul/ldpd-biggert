@@ -1,25 +1,34 @@
 <script id="leaflet-iiif" src="{{ site.js.leaflet-iiif.cdn }}"></script>
 <div id="iiif-viewer"></div>
 <script>
-  var iiif_viewer;
-  var iiifLayers = {};
-  var manifestUrl = '{{ include.manifest_uri }}';
-  iiif_viewer = L.map('iiif-viewer', {
+  const manifestUrl = '{{ include.manifest_uri }}';
+  const iiifViewer = L.map('iiif-viewer', {
     center: [0, 0],
     crs: L.CRS.Simple,
     zoom: 1,
     zoomSnap: .5,
-    minZoom: 0,
     maxZoom: 6
   });
-  $.getJSON(manifestUrl, function(data) {;
-    var i = 1;
-    $.each(data.sequences[0].canvases, function(_, val) {
-      var label = 'image ' + i;
-      iiifLayers[label] = L.tileLayer.iiif(val.images[0].resource.service['@id'] + '/info.json', {fitBounds: true});
-      i++;
+  fetch(manifestUrl).then(manifestSrc => {
+    manifestSrc.json().then(data => {
+      console.log({ data });
+      const iiifLayers = {};
+      var i = 1;
+      $.each(data.items, function(_, canvas) {
+        if (canvas.type != 'Canvas') return;
+        var label = 'image ' + i;
+        $.each(canvas.items, function(_, annoPage) {
+          if (annoPage.type != 'AnnotationPage') return;
+          $.each(annoPage.items, function(_, anno) {
+            if (anno.type != 'Annotation' || anno.motivation != 'painting') return;
+            console.log(anno.body.service['id'] + '/info.json');
+            iiifLayers[label] = L.tileLayer.iiif(anno.body.service['id'] + '/info.json', { fitBounds: true })
+            i++;
+          });
+        });
+      });
+      L.control.layers(iiifLayers).addTo(iiifViewer);
+      iiifLayers[Object.keys(iiifLayers)[0]].addTo(iiifViewer);
     });
-    if (i > 2){ L.control.layers(iiifLayers).addTo(iiif_viewer);}
-    iiifLayers[Object.keys(iiifLayers)[0]].addTo(iiif_viewer);
   });
 </script>
